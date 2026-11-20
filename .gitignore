@@ -16,6 +16,8 @@
 !/frontend/effort-slider.js
 !/frontend/effort-slider.css
 !/frontend/channel-settings.js
+!/frontend/channel-connection.js
+!/frontend/channel-editor.js
 !/frontend/channel-settings.css
 !/integrations/antigrative-dashboard/COMPATIBILITY.md
 !/integrations/antigrative-dashboard/LICENSE

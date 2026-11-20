@@ -2,7 +2,7 @@
 
 Antigravity 的 Windows 社区增强包：中文／英文界面切换、桌面主 Agent 多渠道聚合、原生工作流优化，以及内置 Antigrative Dashboard。
 
-**增强包 1.4.1** 适配 **Windows x64、Antigravity 2.33.0**。首次安装默认进入本地工作区，无需登录或配置提供商；使用 Agent 时再添加 API 渠道，也可主动选择官方服务登录。已有接入设置保留，工具调用继续走原生审批。
+**增强包 1.4.2** 适配 **Windows x64、Antigravity 2.33.0**。首次安装默认进入本地工作区，无需登录或配置提供商；使用 Agent 时再添加 API 渠道，也可主动选择官方服务登录。已有接入设置保留，工具调用继续走原生审批。
 
 - **语言设置**：在「设置 → 通用 → 语言」选择简体中文或 English。覆盖项目菜单、权限、设置、任务及常用界面；少数第三方扩展和服务端动态文案可能仍为英文。
 - **桌面主 Agent 多渠道聚合**：支持 OpenAI Chat Completions、OpenAI Responses、Anthropic Messages 和 Gemini 四种协议，参考 CC Switch 的渠道管理与协议适配架构。切换模式或模型后须完全退出并重新启动 Antigravity。

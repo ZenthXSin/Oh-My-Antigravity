@@ -1,4 +1,4 @@
-#define ProductVersion "1.4.1"
+#define ProductVersion "1.4.2"
 [Setup]
 AppId={{94F84883-63A1-4512-ABCC-B47B8BE32DC1}
 AppName=Oh My Antigravity
@@ -10,7 +10,7 @@ PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=..\dist
-OutputBaseFilename=OhMyAntigravity-1.4.1-win-x64-setup
+OutputBaseFilename=OhMyAntigravity-1.4.2-win-x64-setup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern

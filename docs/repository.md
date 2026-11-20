@@ -38,9 +38,9 @@ python packaging/build-package.py --node packaging/downloads/node.exe
 
 重新构建已有暂存目录时使用脚本的 `--refresh` 参数。Node.js 来源可通过 `--node` 或 `AGY_NODE_EXE` 指定，编译器可通过 `--iscc` 或 `AGY_ISCC_EXE` 指定。使用固定下载的 Node.js 可保持运行时版本一致。
 
-1.4.1 构建结果输出到 `dist/OhMyAntigravity-1.4.1-win-x64-setup.exe`，并生成 SHA256 文件及 `Install-OhMyAntigravity.cmd`、`launch-setup.ps1`。三份安装文件放在同一目录，可通过 CMD 选择可写临时目录后安装。构建完成后在实际 Windows 安装流程中验证：首次安装、已有 2.33.0 增强安装、中文／英文切换、主 Agent 渠道切换、强度滑条、原生工具审批、Dashboard 使用，以及卸载恢复。只有实际安装与操作覆盖的行为才作为已验证结论。当前真实付费渠道尚无密钥，未完成真实服务端验收；社区安装包自身未签名。
+1.4.2 构建结果输出到 `dist/OhMyAntigravity-1.4.2-win-x64-setup.exe`，并生成 SHA256 文件及 `Install-OhMyAntigravity.cmd`、`launch-setup.ps1`。三份安装文件放在同一目录，可通过 CMD 选择可写临时目录后安装。构建完成后在实际 Windows 安装流程中验证：首次安装、已有 2.33.0 增强安装、中文／英文切换、主 Agent 渠道切换、强度滑条、原生工具审批、Dashboard 使用，以及卸载恢复。只有实际安装与操作覆盖的行为才作为已验证结论。当前真实付费渠道尚无密钥，未完成真实服务端验收；社区安装包自身未签名。
 
-当前 1.4.1 构建产物为 217,541,200 bytes，SHA256 为 `80c81a33353be44b855a22659365914e6c0742603594fb42811ac6e97c782790`。二进制产物及演练截图不进入源码仓库。已操作的原生应用验收范围见 [多渠道与模型设置](channel-routing.md)。
+当前 1.4.2 构建产物为 217,539,684 bytes，SHA256 为 `2697ada30cabcd1d2489958c1613f4bb41930127f0954f8afc59a4ff7d1e405d`。二进制产物及演练截图不进入源码仓库。已操作的原生应用验收范围见 [多渠道与模型设置](channel-routing.md)。
 
 增强前端在安装时从接收者的官方应用中提取并生成。安装工具根据接收者的配置位置写入 MCP 绝对路径；源码 MCP 配置采用相对路径，不包含开发者的账户目录。
 

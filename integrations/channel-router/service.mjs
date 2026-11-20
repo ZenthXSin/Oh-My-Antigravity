@@ -19,7 +19,7 @@ export class ChannelService {
   async status(){const config=await this.store.read();return {...config,connectionMode:connectionMode(config),running:this.initialMode==='channels',restartRequired:connectionMode(config)!==this.initialMode||this.initialMode==='channels'&&JSON.stringify(config.providers)!==this.catalogSnapshot};}
   mutate(action){const operation=this.queue.then(action);this.queue=operation.catch(()=>{});return operation;}
   async catalog(){const config=await this.store.read();return publicCatalog({...config,connectionMode:this.initialMode,enabled:this.initialMode==='channels'},this.gateway?.url);}
-  async save(input) {
+  async save(input,{activate=false}={}) {
     const provider=validateProvider(input);
     const operation=this.queue.then(async()=>{
       const config=await this.store.read();const previous=input.id?config.providers.find(provider=>provider.id===input.id):null;
@@ -29,6 +29,7 @@ export class ChannelService {
       else if(!previous)throw new Error('API key is required for a new channel.');
       const row={id,...provider};config.providers=previous?config.providers.map(value=>value.id===id?row:value):[...config.providers,row];
       const available=routes(config);if(!available.some(route=>route.alias===config.defaultAlias))config.defaultAlias=available[0]?.alias??null;
+      if(activate){config.connectionMode='channels';config.enabled=true;}
       await this.store.write(config);return this.status();
     });this.queue=operation.catch(()=>{});return operation;
   }
@@ -42,6 +43,6 @@ export async function installIpc(electron) {
     if(event.senderFrame!==event.sender.mainFrame)throw new Error('Channel settings are only available in the main application.');
     const origin=new URL(event.senderFrame.url);if(!['127.0.0.1','localhost','[::1]'].includes(origin.hostname)||!['http:','https:'].includes(origin.protocol))throw new Error('Invalid channel settings origin.');
     if(!input||typeof input!=='object')throw new Error('Invalid channel request.');
-    switch(input.action){case 'status':return target.status();case 'catalog':return target.catalog();case 'save':return target.save(input.provider);case 'remove':return target.remove(input.id);case 'mode':return target.mode(input.mode??input.enabled);case 'models':return target.models(input.provider);default:throw new Error('Unknown channel settings action.');}
+    switch(input.action){case 'status':return target.status();case 'catalog':return target.catalog();case 'save':return target.save(input.provider,{activate:input.activate===true});case 'remove':return target.remove(input.id);case 'mode':return target.mode(input.mode??input.enabled);case 'models':return target.models(input.provider);default:throw new Error('Unknown channel settings action.');}
   });
 }

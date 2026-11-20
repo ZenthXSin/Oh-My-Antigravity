@@ -13,5 +13,6 @@ export function addChannelSettings(source,root) {
   ];
   for(const [before,after] of edits){if(source.split(before).length!==2)throw new Error('Native channel integration anchor changed: '+before);source=source.replace(before,after);}
   const end=source.indexOf(';')+1;
-  return source.slice(0,end)+'\n'+fs.readFileSync(path.join(root,'frontend/channel-settings.js'),'utf8')+'\n'+source.slice(end);
+  const ui=['channel-settings.js','channel-connection.js','channel-editor.js'].map(file=>fs.readFileSync(path.join(root,'frontend',file),'utf8')).join('\n');
+  return source.slice(0,end)+'\n'+ui+'\n'+source.slice(end);
 }

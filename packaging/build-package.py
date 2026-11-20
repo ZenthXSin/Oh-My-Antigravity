@@ -64,9 +64,9 @@ def main():
     (STAGE / 'inspection').mkdir(exist_ok=True)
     inventory = {str(f.relative_to(STAGE)).replace('\\','/'):hashlib.sha256(f.read_bytes()).hexdigest()
                  for f in sorted(STAGE.rglob('*')) if f.is_file() and f.name != 'distribution-manifest.json'}
-    (STAGE / 'distribution-manifest.json').write_text(json.dumps({'version':'1.4.1','files':inventory},indent=2),encoding='utf8')
+    (STAGE / 'distribution-manifest.json').write_text(json.dumps({'version':'1.4.2','files':inventory},indent=2),encoding='utf8')
     subprocess.run([args.iscc,'/Qp',str(PACKAGE / 'setup.iss')],check=True)
-    output = ROOT / 'dist/OhMyAntigravity-1.4.1-win-x64-setup.exe'
+    output = ROOT / 'dist/OhMyAntigravity-1.4.2-win-x64-setup.exe'
     for name in ['launch-setup.ps1','Install-OhMyAntigravity.cmd']:
         copy(PACKAGE / name, output.parent / name)
     sha = hashlib.sha256(output.read_bytes()).hexdigest()
