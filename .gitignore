@@ -79,6 +79,8 @@
 !/package.json
 !/packaging/ChineseSimplified.isl
 !/packaging/bootstrap.ps1
+!/packaging/launch-setup.ps1
+!/packaging/Install-OhMyAntigravity.cmd
 !/packaging/build-package.py
 !/packaging/distribution-license.txt
 !/packaging/embedded-web.json
@@ -114,6 +116,10 @@
 !/tools/install-dashboard.py
 !/tools/install-locale.py
 !/tools/install-channels.py
+!/tools/install-startup.py
+!/tools/locale/local-session-support.mjs
+!/frontend/local-session.js
+!/integrations/channel-router/connection-mode.mjs
 !/tools/locale/language-support.mjs
 !/tools/locale/project-display.mjs
 !/tools/locale/effort-support.mjs

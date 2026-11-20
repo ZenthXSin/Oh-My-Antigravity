@@ -1,5 +1,6 @@
 import {createHash} from 'node:crypto';
 import {effortLevels} from './contracts.mjs';
+import {connectionMode} from './connection-mode.mjs';
 
 export function routes(config) {
   return config.providers.flatMap(provider=>provider.models.flatMap(model=>{
@@ -12,7 +13,7 @@ export function routes(config) {
   }));
 }
 export function publicCatalog(config,baseUrl) {
-  return {enabled:config.enabled,models:config.enabled?routes(config).map(route=>({alias:route.alias,label:route.label,base:route.base,effort:route.effort,
+  return {enabled:config.enabled,connectionMode:connectionMode(config),ready:config.enabled&&config.providers.some(p=>p.models.length),models:config.enabled?routes(config).map(route=>({alias:route.alias,label:route.label,base:route.base,effort:route.effort,
     modelInfo:{modelId:326,modelType:2,apiProvider:24,modelName:route.alias,displayName:route.label,baseUrl,
       maxTokens:route.model.contextWindow??275000,maxOutputTokens:route.model.maxOutputTokens??125000}})):[]};
 }

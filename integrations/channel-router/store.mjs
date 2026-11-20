@@ -8,7 +8,7 @@ export class ChannelStore {
   }
   async read() {
     try{return JSON.parse(await fs.readFile(this.file,'utf8'));}
-    catch(error){if(error.code==='ENOENT')return {schema:1,enabled:false,defaultAlias:null,providers:[]};throw error;}
+    catch(error){if(error.code==='ENOENT')return {schema:1,connectionMode:'local',enabled:false,defaultAlias:null,providers:[]};throw error;}
   }
   async write(config) {
     const operation=this.queue.then(async()=>{
@@ -16,7 +16,12 @@ export class ChannelStore {
       const temporary=this.file+'.tmp';
       const handle=await fs.open(temporary,'w',0o600);
       try{await handle.writeFile(JSON.stringify(config,null,2)+'\n','utf8');await handle.sync();}finally{await handle.close();}
-      await fs.rename(temporary,this.file);
+      try {await fs.rename(temporary,this.file);}
+      catch(error) {
+        if(process.platform!=='win32'||error.code!=='EXDEV')throw error;
+        await fs.copyFile(temporary,this.file);
+        await fs.unlink(temporary);
+      }
     });
     this.queue=operation.catch(()=>{});return operation;
   }

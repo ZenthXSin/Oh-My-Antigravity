@@ -120,6 +120,7 @@ def main():
                                                             'usageGuideDismissed':False,'speedStyle':'minimal','revision':1})
             run([sys.executable,ROOT / 'tools/install-locale.py'], environment)
             run([sys.executable,ROOT / 'tools/install-channels.py'], environment)
+            run([sys.executable,ROOT / 'tools/install-startup.py'], environment)
             files.finish()
         except Exception:
             files.finish()

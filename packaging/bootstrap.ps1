@@ -1,4 +1,5 @@
 param([string]$Installer, [string]$AppPath, [string]$ErrorFile)
+$env:PSModulePath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\Modules;$env:ProgramFiles\WindowsPowerShell\Modules"
 $ErrorActionPreference = 'Stop'
 try {
   $taskHash = (Get-FileHash -LiteralPath $Installer -Algorithm SHA256).Hash

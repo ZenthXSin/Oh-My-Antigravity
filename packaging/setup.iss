@@ -1,4 +1,4 @@
-#define ProductVersion "1.4.0"
+#define ProductVersion "1.4.1"
 [Setup]
 AppId={{94F84883-63A1-4512-ABCC-B47B8BE32DC1}
 AppName=Oh My Antigravity
@@ -10,7 +10,7 @@ PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=..\dist
-OutputBaseFilename=OhMyAntigravity-1.4.0-win-x64-setup
+OutputBaseFilename=OhMyAntigravity-1.4.1-win-x64-setup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
@@ -50,7 +50,7 @@ procedure InitializeWizard;
 begin
   HostPage := CreateInputDirPage(wpWelcome, '选择 Antigravity 安装目录',
     '本增强包适用于 Antigravity 2.33.0',
-    '请选择包含 Antigravity.exe 的目录。你的账号、模型、权限及会话数据沿用原有配置。', False, '');
+    '首次安装会自动内置 Antigravity。默认无需账号或提供商即可进入本地工作区；已有接入和会话配置保留。', False, '');
   HostPage.Add('Antigravity 安装目录：');
   HostDirectory := ExpandConstant('{localappdata}\Programs\antigravity');
   if ExpandConstant('{param:HOST|}') <> '' then HostDirectory := ExpandConstant('{param:HOST|}');

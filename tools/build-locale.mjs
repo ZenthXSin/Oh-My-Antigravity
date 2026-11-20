@@ -6,6 +6,7 @@ import {addLanguageSetting} from './locale/language-support.mjs';
 import {projectDisplayPairs} from './locale/project-display.mjs';
 import {addEffortSlider} from './locale/effort-support.mjs';
 import {addChannelSettings} from './locale/channel-support.mjs';
+import {addLocalSession} from './locale/local-session-support.mjs';
 
 const root=path.resolve(import.meta.dirname,'..');
 const original=fs.readFileSync(path.join(root,'original-web/main.js'),'utf8');
@@ -66,6 +67,11 @@ for(const [before,after] of [['id:k},a)','id:k},__agyZhText(a))'],['id:l},b)','i
 compiled=compiled.slice(0,rowStart)+row+compiled.slice(rowEnd);
 const auditedDisplayPairs=[
   ...projectDisplayPairs,
+  ['unnamed:"Hey there, what should we build today?"','unnamed:"你好，今天想做什么？"'],
+  ['unnamed:"Welcome back. Where should we pick up?"','unnamed:"欢迎回来，我们从哪里继续？"'],
+  ['unnamed:"Good to see you. What\'s next?"','unnamed:"你好，接下来做什么？"'],
+  ['var G=f?.label??"No Model Selected",H=""','var G=f?.label??"未选择模型",H=""'],
+  ['var k=g||h||"Account";return','var k=g||h||"账号";return'],
   ['nextLabel:C===10?xc?"Continue":"Skip":void 0','nextLabel:C===10?xc?"继续":"跳过":void 0'],
   ['label:t.name,description:t.description,selection:{kind:"persona",id:t.id}',
    'label:__agyZhText(t.name),description:__agyZhText(t.description),selection:{kind:"persona",id:t.id}'],
@@ -132,7 +138,8 @@ parse(compiled,{ecmaVersion:'latest'});
 compiled=addLanguageSetting(compiled,root);
 compiled=addEffortSlider(compiled,root);
 compiled=addChannelSettings(compiled,root);
-const english=addChannelSettings(addEffortSlider(addLanguageSetting(original,root),root),root);
+compiled=addLocalSession(compiled,root);
+const english=addLocalSession(addChannelSettings(addEffortSlider(addLanguageSetting(original,root),root),root),root);
 parse(compiled,{ecmaVersion:'latest'});
 parse(english,{ecmaVersion:'latest'});
 const web=path.join(root,'web');fs.mkdirSync(web,{recursive:true});

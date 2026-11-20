@@ -1,4 +1,5 @@
 param([string]$AppPath, [string]$PackagePath, [string]$ErrorFile = (Join-Path $env:TEMP 'AntigravityCustom-preflight.txt'))
+$env:PSModulePath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\Modules;$env:ProgramFiles\WindowsPowerShell\Modules"
 $ErrorActionPreference = 'Stop'
 try {
   if (-not (Test-Path -LiteralPath (Join-Path $AppPath 'resources\app.asar'))) { throw 'Antigravity was not found. Select the directory containing Antigravity.exe.' }
