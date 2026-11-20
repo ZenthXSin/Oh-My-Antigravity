@@ -1,0 +1,78 @@
+Manage Antigravity app settings.	管理 Antigravity 应用设置。
+Prevent Sleep	防止休眠
+Prevent the computer from sleeping while the app is running.	应用运行时防止电脑休眠。
+Keep In Menu Bar	在后台运行
+Keep the app accessible from the menu bar and running in the background when all windows are closed.	关闭所有窗口后仍在后台运行，可从菜单栏访问应用。
+Enable Remote Control	启用远程控制
+Work with local agents from another device.	从其他设备使用本机 Agent。
+Notification Settings	通知设置
+To modify notification settings, open your operating system's system preferences.	请打开操作系统设置修改通知选项。
+Open System Preferences	打开系统设置
+App version	应用版本
+Advanced Settings	高级设置
+Configure the agent's visual theme and display preferences.	配置 Agent 的主题和显示选项。
+Chat	聊天
+Conversation Steps	会话步骤
+Choose how much detail is shown during a conversation.	选择会话过程的详细程度。
+Verbose	详细
+Contrast	对比度
+Strong	强
+Font	字体
+Dark Theme	深色主题
+Default Dark	默认深色
+Background	背景
+Foreground	前景
+Accent	强调色
+Code Preview	代码预览
+Manage your notification preferences.	管理通知选项。
+Enable Notifications for Agent	启用 Agent 通知
+Show system notifications when your action is needed or the agent finishes.	需要你操作或 Agent 完成任务时显示系统通知。
+Sound	声音
+Enable Sounds for Agent	启用 Agent 提示音
+Play a sound when your action is needed or the agent finishes.	需要你操作或 Agent 完成任务时播放提示音。
+Set the volume of agent sounds.	设置 Agent 提示音音量。
+Configure built-in browser, link opening, and browser subagent preferences.	配置内置浏览器、链接打开方式和浏览器子 Agent。
+Built-in Browser	内置浏览器
+Open Links In	链接打开方式
+Choose where links open by default when clicked.	选择点击链接时默认使用的浏览器。
+External Browser	外部浏览器
+Download Location	下载位置
+Folder where files downloaded in the built-in browser are saved.	内置浏览器下载文件的保存目录。
+Change…	更改…
+Browsing History	浏览历史
+Clear visited URLs and autocomplete suggestions from the built-in browser.	清除内置浏览器的访问记录和自动补全建议。
+Clear	清除
+Browser Subagent	浏览器子 Agent
+Browser Actuation Rules	浏览器操作规则
+Configure allowed and denied URLs for the browser subagent. It runs in the built-in browser, so no separate browser install is needed.	配置浏览器子 Agent 可访问或禁止访问的网址。它使用内置浏览器，无需额外安装。
+Add to Chat/Quote	添加到聊天／引用
+Comment on Selection	评论选中内容
+Side Question Selection	询问选中内容
+Split Conversation Horizontally	左右拆分会话
+Split Conversation Vertically	上下拆分会话
+Pin / Unpin Conversation	置顶／取消置顶会话
+Archive This Conversation	归档当前会话
+Layout Controls	布局控制
+Toggle Maximize Side Panel	切换侧面板最大化
+Toggle Terminal	切换终端
+New Terminal Tab	新建终端标签页
+Terminal: Add to Chat	终端：添加到聊天
+Terminal: Select All	终端：全选
+Simplified interface for research, writing, and everyday tasks.	适合研究、写作和日常任务的简洁界面。
+Full interface for coding, developer tools, and managing agents.	适合编程、开发工具和 Agent 管理的完整界面。
+Controls the actions the agent can take.	控制 Agent 可执行的操作。
+More actions	更多操作
+Close	关闭
+Local Permissions	本机权限
+Remote Permissions	远程权限
+Request Review	逐次审批
+Every command requires approval.	每条命令都需要批准。
+Turbo	极速
+Run all commands without restrictions.	不受限制地运行所有命令。
+Ask before sensitive operations.	执行敏感操作前询问。
+Automatically decide if commands run.	自动判断是否运行命令。
+This Conversation	当前会话
+Only this conversation uses this preset.	仅当前会话使用此预设。
+Your Remote setting	你的远程权限设置
+Your This Computer setting	你的本机权限设置
+Permission Details	权限详情

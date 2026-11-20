@@ -1,0 +1,963 @@
+Project	项目
+Workspace	工作区
+Copy Project Name	复制项目名称
+Copy Workspace Name	复制工作区名称
+Delete Project	删除项目
+Delete Workspace	删除工作区
+Workspace Settings	工作区设置
+Show in File Explorer	在文件资源管理器中显示
+Show in File Manager	在文件管理器中显示
+Reveal in Finder	在 Finder 中显示
+Archive project	归档项目
+Archive Workspace	归档工作区
+Background Task	后台任务
+Accept Step	接受步骤
+Reject Step	拒绝步骤
+Toggle Model Selector	切换模型选择器
+Start Voice Recording	开始录音
+Stop Voice Recording	停止录音
+Toggle Voice Recording	切换录音
+Mute Voice Mic	切换麦克风静音
+Mute Voice Speaker	切换扬声器静音
+Toggle Word Wrap	切换自动换行
+Toggle Project Selector	切换项目选择器
+Toggle Environment Selector	切换环境选择器
+Equalize Split Panes	均分面板
+Reopen Closed Tab	重新打开已关闭的标签页
+File Picker	文件选择器
+Open Command Palette	打开命令面板
+Open Conversation Picker	打开会话选择器
+Open Workspace Selector	打开工作区选择器
+Open in Cider	在 Cider 中打开
+Quote Selection	引用选中内容
+Focus Input	聚焦输入框
+Find in Pane	在面板中查找
+Scheduled Tasks	定时任务
+Select Next Conversation	选择下一会话
+Select Previous Conversation	选择上一会话
+Move Conversation Up	上移会话
+Move Conversation Down	下移会话
+Open Keyboard Shortcuts	打开快捷键设置
+Refresh gcert Credentials	刷新 gcert 凭据
+Copy Conversation Markdown	复制会话 Markdown
+Pin This Conversation	置顶当前会话
+Unpin This Conversation	取消置顶当前会话
+Find in Conversation	在会话中查找
+Jump to Previous Prompt	跳转到上一条消息
+Jump to Next Prompt	跳转到下一条消息
+Mark This Conversation as Read	将当前会话标为已读
+Mark This Conversation as Unread	将当前会话标为未读
+Rename This Conversation	重命名当前会话
+Move to New Group	移至新分组
+Open Trajectory Debug View	打开执行轨迹调试视图
+Copy Conversation ID	复制会话 ID
+Copy Trajectory ID	复制执行轨迹 ID
+Download Diagnostics	下载诊断信息
+Toggle Between Light/Dark Themes	切换浅色／深色主题
+Stop SSH Server…	停止 SSH 服务器…
+Switch to This Computer	切换到本机
+Previous Side Panel Tab	上一个侧面板标签页
+Next Side Panel Tab	下一个侧面板标签页
+Collapse All Folders	折叠所有文件夹
+Expand All Folders	展开所有文件夹
+Cancel Generation	停止生成
+Submit Prompt (Alternate to Enter)	发送消息（Enter 之外的快捷键）
+Open Folder	打开文件夹
+Project 4K interface without developer tooling.	适合日常任务的简洁项目界面。
+The full developer experience.	完整的开发功能。
+Standalone	独立会话
+File Explorer	文件资源管理器
+Save Video	保存视频
+Save Image	保存图片
+Copy Image	复制图片
+Open in Tab	在标签页中打开
+Open in New Tab	在新标签页中打开
+Muted	已静音
+Pause (k)	暂停（k）
+Play (k)	播放（k）
+2x playback speed	2 倍播放速度
+Seek	跳转进度
+Back 5s (←)	后退 5 秒（←）
+Forward 5s (→)	前进 5 秒（→）
+Unmute (m)	取消静音（m）
+Mute (m)	静音（m）
+Playback speed (< / >)	播放速度（< / >）
+Exit fullscreen (f)	退出全屏（f）
+Fullscreen (f)	全屏（f）
+Zoom out (-)	缩小（-）
+Reset zoom (0)	重置缩放（0）
+Zoom in (+)	放大（+）
+Loading media...	正在加载媒体…
+Copy image	复制图片
+Download video	下载视频
+Download image	下载图片
+Close (Esc)	关闭（Esc）
+Previous (←)	上一个（←）
+Next (→)	下一个（→）
+Add inline comment	添加行内评论
+Stop recording	停止录音
+Dev mode: Localhost server automatically detected	开发模式：已自动发现本地服务器
+Copy Link	复制链接
+Link Settings	链接设置
+Open In	打开方式
+Members	成员
+From	发件人
+Sent	发送时间
+Owner	所有者
+Copy gh auth login command	复制 gh auth login 命令
+Run	运行
+in a terminal	在终端中
+Grant repository access	授予仓库访问权限
+Author	作者
+Edit comment	编辑评论
+Delete comment	删除评论
+Hold 	按住 
+ to upload	 以上传
+Upload to Agent	上传给 Agent
+Source:	来源：
+Title:	标题：
+License:	许可证：
+Web Preview	网页预览
+Embedding Limitations	嵌入限制
+ or	 或
+. If a page fails to load, use the	。页面无法加载时，请使用
+Open in new tab	在新标签页中打开
+icon in the URL bar.	地址栏中的图标。
+Quick Start	快速开始
+The remote workspace is not running	远程工作区未运行
+Taking longer than usual to load	加载时间比平时更长
+This page is taking longer than expected to load, or it may be blocking embedded views (via X-Frame-Options or CSP).	此页面加载时间较长，或通过 X-Frame-Options／CSP 阻止嵌入显示。
+ We'll keep waiting, or you can open it directly in a new tab.	 将继续等待，也可直接在新标签页中打开。
+Secondary action	其他操作
+Enter a URL (e.g. http://localhost:8080)	输入网址（例如 http://localhost:8080）
+Address bar	地址栏
+Address bar suggestions	地址栏建议
+Remove from history	从历史记录中移除
+Remove from history (Shift+Delete)	从历史记录中移除（Shift+Delete）
+About embedding	关于嵌入显示
+Something went wrong!	发生错误。
+Hide Error	隐藏错误
+Show Error	显示错误
+Not Found	未找到
+Open the page in system browser	在系统浏览器中打开页面
+Your connection is not private	连接不安全
+Hide advanced	隐藏高级选项
+Back to safety	返回安全页面
+Mentions	引用
+No matching results	没有匹配结果
+Searching	正在搜索
+Searching…	正在搜索…
+to exit	退出
+An error was thrown.	发生错误。
+Message input	消息输入框
+Leave a comment	发表评论
+Edit Comment	编辑评论
+View or edit comment	查看或编辑评论
+Click to view or edit comment	点击查看或编辑评论
+No compatible devices found.	未找到兼容设备。
+OK	确定
+Certificate details	证书详情
+Issued to	颁发给
+Issued by	颁发者
+Valid until	有效期至
+Protocol	协议
+View site information	查看网站信息
+Security	安全
+Cookies and site data	Cookie 和网站数据
+Clear cookies and site data	清除 Cookie 和网站数据
+Downloads, in progress	正在下载
+Downloads	下载
+Close downloads	关闭下载列表
+No recent downloads	暂无下载记录
+Show in folder	在文件夹中显示
+Cancel download	取消下载
+Remove from list	从列表中移除
+Forward	前进
+Resume 1 comment draft	继续编辑 1 条评论草稿
+Resume comment draft	继续编辑评论草稿
+1 Draft	1 条草稿
+Discard comment draft	丢弃评论草稿
+Inspect element to comment	选择元素并评论
+Exit inspect element mode (Esc)	退出元素选择模式（Esc）
+Add screenshot to conversation	将截图添加到会话
+Open in external browser	在外部浏览器中打开
+Open Link in New Tab	在新标签页中打开链接
+Open Link in External Browser	在外部浏览器中打开链接
+Copy Link Address	复制链接地址
+Open Image in New Tab	在新标签页中打开图片
+Copy Image Address	复制图片地址
+Open in External Browser	在外部浏览器中打开
+Open in Side Panel	在侧面板中打开
+Loading preview…	正在加载预览…
+Embedded web preview	嵌入式网页预览
+Open in Built-in Browser	在内置浏览器中打开
+Failed to parse settings. Fix and restart.	设置解析失败，请修复后重启。
+Copy error messages	复制错误信息
+Enter to Send	按 Enter 发送
+Send messages with the keyboard's Enter key instead of starting a new line.	按 Enter 发送消息，而非换行。
+Command Setup Script	命令初始化脚本
+A shell setup script run before every command the agent executes.	Agent 执行每条命令前运行的 Shell 初始化脚本。
+Enable Terminal Sandbox	启用终端沙箱
+Run terminal commands with sandbox restrictions.	在沙箱限制下运行终端命令。
+Terminal Command Auto Execution	终端命令自动执行
+Always Proceed	始终执行
+Proceed in Sandbox	在沙箱中执行
+The agent always asks for confirmation before executing terminal commands (except those in the Allow list).	执行终端命令前始终请求确认，允许列表中的命令除外。
+Terminal command automatically proceeds if the command runs inside the sandbox. Otherwise, it requests review.	在沙箱内自动执行终端命令，沙箱外请求审批。
+Custom Context Menus	自定义右键菜单
+Replace the default browser right-click menu with quick actions.	使用快捷操作替换浏览器默认右键菜单。
+Screen Reader Mode	屏幕阅读器模式
+Optimize the interface and terminal output for screen readers.	为屏幕阅读器优化界面和终端输出。
+Configure the maximum width of the conversation panel.	设置会话面板的最大宽度。
+Narrow	窄
+Wide	宽
+Fill	填满
+Terminal Placement	终端位置
+Choose where terminal sessions appear.	选择终端会话的显示位置。
+Bottom Panel	底部面板
+Markdown Artifact Width	Markdown 文档宽度
+Configure the default width of markdown artifacts.	设置 Markdown 文档的默认宽度。
+Context and Quota Indicator	上下文与额度指示器
+Show how full the context window is next to the send button. Click it for a breakdown and to see your model quota.	在发送按钮旁显示上下文用量，点击查看明细和模型额度。
+Enable Browser Agent	启用浏览器 Agent
+Browser Javascript Execution Policy	浏览器 JavaScript 执行策略
+Controls whether the agent can run custom JavaScript to automate complex browser actions.	控制 Agent 能否运行自定义 JavaScript 来自动执行浏览器操作。
+Block all browser JavaScript execution.	禁止执行所有浏览器 JavaScript。
+Prompt for approval before running browser scripts.	运行浏览器脚本前请求批准。
+Allow full browser script execution without prompting.	无需询问即可运行浏览器脚本。
+Include Jetski Default Customizations	包含默认自定义项
+Include default customizations, such as default skills.	包含默认技能等自定义项。
+Automatic Check for Updates	自动检查更新
+Automatically prompt you to restart the app when a new update is available. When disabled, you can check for updates manually from the app menu.	有更新时自动提示重启；关闭后可通过应用菜单手动检查更新。
+Nickname	昵称
+Default Workspace VCS	默认工作区版本控制系统
+VCS used when creating a new workspace, including workspaces generated based off your initial prompt.	创建工作区时使用的版本控制系统，也适用于根据首条消息创建的工作区。
+Environments	环境
+United States	美国
+Europe	欧洲
+Choose Region	选择地区
+Select License	选择许可证
+No license available for this project and location	此项目和地区没有可用许可证
+Select Billing Model	选择计费模式
+Billing model	计费模式
+Choose a Subscription	选择订阅
+Available licenses	可用许可证
+Other License	其他许可证
+Select your license	选择许可证
+Loading licenses...	正在加载许可证…
+Confirm Selection	确认选择
+Remote Agents Data	远程 Agent 数据
+Delete All Remote Agents Data	删除所有远程 Agent 数据
+Delete All Data	删除所有数据
+Delete All Remote Agents Data?	删除所有远程 Agent 数据？
+Couldn't delete your data. Try again.	无法删除数据，请重试。
+Manage your plan, credentials, and general preferences.	管理订阅、凭据和通用设置。
+Enable Telemetry	启用遥测
+Marketing Emails	营销邮件
+Your Plan	当前订阅
+Authenticated via Enterprise Gateway	通过企业网关登录
+Upgrade	升级
+Share your referral link with friends	向好友分享邀请链接
+Invite a Friend	邀请好友
+Project Required	需要项目
+License Required	需要许可证
+Manage License	管理许可证
+Managed by Enterprise Gateway	由企业网关管理
+Signing Out...	正在退出登录…
+Sign Out	退出登录
+Not Signed In	未登录
+QR code	二维码
+Device Name	设备名称
+Enter device name...	输入设备名称…
+copy link	复制链接
+Show Remote Control QR code	显示远程控制二维码
+A label for this computer when you connect from another device. Changing it reconnects.	从其他设备连接时显示的本机名称，修改后会重新连接。
+Continue your work from another device with Remote Control. Scan the QR code or open the link below.	通过远程控制从其他设备继续工作，请扫描二维码或打开下方链接。
+Windows Subsystem for Linux	适用于 Linux 的 Windows 子系统
+Local Windows environment	本机 Windows 环境
+Select an option	选择选项
+Validate	验证
+Saving…	正在保存…
+Validating setup script…	正在验证初始化脚本…
+Setup script ran successfully.	初始化脚本运行成功。
+Setup script failed.	初始化脚本运行失败。
+Copy output	复制输出
+Browsing Data	浏览数据
+Clear history, cookies and site data from the built-in browser, or manage cookies for each site.	清除内置浏览器的历史记录、Cookie 和网站数据，或按网站管理 Cookie。
+Cookies by Site	按网站查看 Cookie
+Clear Browsing Data?	清除浏览数据？
+Choose what to clear from the built-in browser. It can't be undone.	选择要清除的内置浏览器数据，此操作无法撤回。
+Browsing history	浏览历史
+Visited URLs and autocomplete suggestions.	访问过的网址和自动补全建议。
+Cookies and other site data	Cookie 和其他网站数据
+Cookies, site storage and cache. Signs you out of all sites in the built-in browser and reloads its open tabs.	Cookie、网站存储和缓存；清除后将退出所有网站并刷新已打开的浏览器标签页。
+Loading cookies…	正在加载 Cookie…
+Couldn't load cookies.	无法加载 Cookie。
+No sites have cookies in the built-in browser.	内置浏览器中没有保存 Cookie 的网站。
+Sites with cookies	保存了 Cookie 的网站
+Search sites...	搜索网站…
+Search sites	搜索网站
+Browser Actuation Permissions	浏览器操作权限
+Execute URLs	访问网址
+Download files	下载文件
+Organization Allowed Domains (Read-Only)	组织允许的域名（只读）
+These allowed domain rules are set by your organization's administrator and cannot be removed.	这些允许域名规则由组织管理员设置，无法移除。
+Side Panel Preview	侧面板预览
+Clear visited URLs and autocomplete suggestions from side panel preview.	清除侧面板预览的网址历史和自动补全建议。
+Console Telemetry	控制台遥测
+Developer	开发者
+Developer-only tools. These settings do not affect other users.	开发者工具，这些设置不影响其他用户。
+Feedback Type	反馈类型
+Description	描述
+Steps to Reproduce	复现步骤
+Please list the steps to reproduce the issue	请列出问题的复现步骤
+Screenshot must be under 10 MB	截图大小必须小于 10 MB
+Attach a screenshot (optional)	附加截图（可选）
+Attaching logs requires an email address	附加日志需要提供邮箱地址
+Visit	访问
+Legal Help	法律帮助
+to ask for content changes for legal reasons.	以法律原因申请内容修改。
+Model Quota	模型额度
+Models & Usage	模型与用量
+Refresh quota and credits data	刷新额度和积分数据
+Manage your model quota and credits.	管理模型额度和积分。
+Plan	订阅
+Model Credits	模型积分
+Enable AI Credit Overages	启用 AI 积分超额使用
+See Activity	查看使用记录
+Get More AI Credits	获取更多 AI 积分
+documentation	文档
+Chime volume	提示音音量
+Running (Dev only)	运行中（仅开发模式）
+Background tasks and terminals agents left running, across all conversations.	所有会话中 Agent 保持运行的后台任务和终端。
+Nothing is running right now	当前没有运行中的任务
+Stopping…	正在停止…
+Still running	仍在运行
+Keybinding Scheme	快捷键方案
+Recommended	推荐
+Customize Shortcuts	自定义快捷键
+VS Code Keyboard Shortcuts	VS Code 快捷键
+Press keys...	按下快捷键…
+Stop Editing	停止编辑
+Cancel recording	取消录制
+Edit Shortcut	编辑快捷键
+Add Shortcut	添加快捷键
+Remove Shortcut	移除快捷键
+Reset to Default	恢复默认
+Managed by application menu	由应用菜单管理
+Search tasks...	搜索任务…
+scheduled task	定时任务
+scheduled tasks	定时任务
+automation	自动化
+automations	自动化
+Open File Search	打开文件搜索
+Enter always submits. This adds a second shortcut.	Enter 始终用于发送，此处添加另一个快捷键。
+Open Conversation in New Tab	在新标签页中打开会话
+Keyboard shortcuts for quick navigation and control.	用于快速导航与操作的快捷键。
+Reset All to Defaults	全部恢复默认
+Reset all shortcuts to defaults	将所有快捷键恢复默认
+No keyboard shortcuts found matching your filter.	没有匹配的快捷键。
+Hide breakdown	隐藏明细
+Hide tools	隐藏工具
+Excluded	已排除
+Other Customizations	其他自定义项
+There are no customizations enabled.	没有启用的自定义项。
+Loading token usage...	正在加载 Token 用量…
+No token data available.	暂无 Token 用量数据。
+Copy path	复制路径
+Path copied!	路径已复制。
+Loading workspace customizations...	正在加载工作区自定义项…
+Connecting to language server...	正在连接语言服务器…
+Configure workspace-specific permissions, resources, and customizations.	设置当前工作区的权限、资源和自定义项。
+Previous voice	上一个声音
+Next voice	下一个声音
+Voices	声音
+Save audio recordings	保存录音
+Only stored on your machine.	仅保存在本机。
+Recordings	录音
+Delete all	全部删除
+Delete all recordings?	删除所有录音？
+Untitled project	未命名项目
+File Reads	读取文件
+File Writes	写入文件
+Read URLs	读取网址
+Terminal Commands	终端命令
+Commands Outside Sandbox	沙箱外命令
+MCP Tools	MCP 工具
+External tools the agent can call via Model Context Protocol.	Agent 可通过 Model Context Protocol 调用的外部工具。
+Enter tool name or server...	输入工具名或服务器…
+File Access Rules	文件访问规则
+Configure allowed and denied paths for file reads and writes.	设置文件读写允许或禁止的路径。
+Configure allowed terminal commands.	设置允许执行的终端命令。
+Configure allowed commands outside the sandbox.	设置允许在沙箱外执行的命令。
+Configure external tools via Model Context Protocol.	通过 Model Context Protocol 设置外部工具。
+File Permissions	文件权限
+Network Permissions	网络权限
+Outside of folders file access policy	工作文件夹外访问策略
+Configures how the agent tries to access files outside of its working folders.	设置 Agent 如何访问工作文件夹之外的文件。
+Controls whether terminal commands require your approval before running.	控制运行终端命令前是否需要你的批准。
+Enable Sandbox Mode	启用沙箱模式
+Restricts agent tools to a secure, isolated local sandbox.	将 Agent 工具限制在隔离的本地沙箱中。
+Terminal sandbox is not supported in this environment	当前环境不支持终端沙箱
+Manually customize individual settings.	手动调整各项设置。
+Your agent’s ability to execute commands is also controlled by enterprise security policies.	Agent 执行命令的能力同时受企业安全策略控制。
+Permissions	权限
+Configure what the agent can do in local and remote conversations.	设置 Agent 在本机与远程会话中可以执行的操作。
+Controls permissions for remote conversations.	控制远程会话权限。
+Terminal & Tooling Permissions	终端与工具权限
+Permission Settings	权限设置
+New Conversation Button	新建会话按钮
+Which workspace the New Conversation button and keyboard shortcut start you in.	设置新建会话按钮和快捷键默认使用的工作区。
+Best of N	多候选生成
+Labs	实验功能
+Dismiss error	关闭错误提示
+Plugin Operation Error:	插件操作错误：
+No Plugins Available	暂无可用插件
+Paste auth code	粘贴授权码
+Error: 	错误：
+Blocked by organization policy	被组织策略阻止
+MCP Servers Disabled	MCP 服务器已禁用
+Your administrator has disabled MCP servers for this workspace.	管理员已禁用当前工作区的 MCP 服务器。
+Installed MCP Servers	已安装的 MCP 服务器
+Refresh MCP servers	刷新 MCP 服务器
+Add MCP	添加 MCP
+Open MCP Config	打开 MCP 配置
+No MCP servers installed	尚未安装 MCP 服务器
+Use Add MCP to browse the store, or add a custom server via the MCP config.	通过“添加 MCP”浏览商店，或在 MCP 配置中添加自定义服务器。
+Use Add MCP to browse the store.	通过“添加 MCP”浏览商店。
+All tools (*)	所有工具（*）
+Hook will trigger if any tool is executed.	执行任意工具时触发钩子。
+Hook will only trigger if the tool name matches run_command.	工具名匹配 run_command 时才触发钩子。
+Hook will only trigger if the tool name matches run_command or view_file.	工具名匹配 run_command 或 view_file 时才触发钩子。
+Browser tools (browser_.*)	浏览器工具（browser_.*）
+Hook will only trigger if the tool name starts with browser_.	工具名以 browser_ 开头时才触发钩子。
+Options	选项
+Timeout:	超时：
+Command:	命令：
+Delete Hook	删除钩子
+Handler #	处理器 #
+Add Hook Card	添加钩子卡片
+Delete Handler	删除处理器
+Matcher:	匹配规则：
+Add Handler	添加处理器
+Loading hooks...	正在加载钩子…
+Agent Hooks Configuration	Agent 钩子配置
++ Add Hook	+ 添加钩子
+New hook name	新钩子名称
+Save Configuration	保存配置
+Installing	正在安装
+Add MCP Servers	添加 MCP 服务器
+Manage Hooks	管理钩子
+Configure default behaviors, skills, and MCP servers.	设置默认行为、技能和 MCP 服务器。
+Default Customizations	默认自定义项
+When enabled, the agent will include default customizations, including default skills.	启用后，Agent 将加载默认技能等自定义项。
+Token Usage	Token 用量
+Customize	自定义
+Configure hooks that run on agent lifecycle events.	设置在 Agent 生命周期事件中运行的钩子。
+Services this plugin connects to on your behalf.	此插件代表你连接的服务。
+ If you add multiple accounts, MCP servers use the one marked Default.	 添加多个账号时，MCP 服务器使用标为默认的账号。
+Enable this plugin to manage its accounts.	启用此插件以管理账号。
+Waiting for you to finish signing in…	等待你完成登录…
+Signed-in accounts	已登录账号
+Needs re-auth	需要重新授权
+Make default	设为默认
+Add label	添加标签
+Add account	添加账号
+No sign-in needed	无需登录
+Enable the plugin to sign in.	启用插件以登录。
+Finish signing in in your browser.	请在浏览器中完成登录。
+Paste a code instead	改为粘贴授权码
+Checking…	正在检查…
+Restart sign-in	重新登录
+Get API key	获取 API 密钥
+Scopes:	权限范围：
+Paste the code shown after you sign in.	粘贴登录后显示的授权码。
+Paste code	粘贴授权码
+Loading resources...	正在加载资源…
+Not connected	未连接
+Filter resources...	筛选资源…
+No matching resources found.	没有匹配的资源。
+Upload Files	上传文件
+Remove resource	移除资源
+No project selected	未选择项目
+Edit title	编辑标题
+Are you sure you want to delete the 	确定要删除此
+This will permanently delete 	这将永久删除
+within it.	其中的内容。
+No project selected or project management not available.	未选择项目，或项目管理功能不可用。
+ with this name already exists.	已存在同名项目。
+All Workspaces	所有工作区
+Setup Script	初始化脚本
+A shell setup script run before every command the agent executes in this project. Overrides the global script.	Agent 在此项目中执行每条命令前运行的 Shell 初始化脚本，覆盖全局脚本。
+Folders	文件夹
+No resources added yet.	尚未添加资源。
+No folders added yet.	尚未添加文件夹。
+Danger Zone	危险操作
+Permanently delete	永久删除
+ including 	，包括
+Delete 	删除
+Show Less	收起
+Show All	显示全部
+Upload Debug Bundle	上传调试信息包
+Open settings menu	打开设置菜单
+Settings Unavailable	设置不可用
+Last 7 days	最近 7 天
+Summarizing call…	正在总结通话…
+Nothing said yet	暂无发言
+Copied transcript	转录内容已复制
+Copy transcript	复制转录内容
+Show Details	显示详情
+Open SSH Host	打开 SSH 主机
+Connect to SSH Host	连接 SSH 主机
+Remove from Recent	从最近记录中移除
+Hide from this list	从此列表隐藏
+Show in the list again	重新显示在列表中
+Enter [user@]host[:port], or pick a host from your SSH config.	输入 [user@]host[:port]，或从 SSH 配置中选择主机。
+ Then create the project in its window.	 然后在该主机窗口中创建项目。
+SSH host	SSH 主机
+Connecting…	正在连接…
+1 hidden host	1 个已隐藏的主机
+Hidden hosts	已隐藏的主机
+Loading hosts…	正在加载主机…
+Couldn't load your SSH hosts. You can still type one.	无法加载 SSH 主机，仍可手动输入。
+Choose File…	选择文件…
+Use Default	使用默认值
+See plans	查看订阅方案
+Copy debug info	复制调试信息
+Complete verification	完成验证
+Log back in	重新登录
+troubleshooting guide	故障排查指南
+Purchase Credits	购买积分
+See Plans	查看订阅方案
+Select another model	选择其他模型
+Enable Overages	启用超额使用
+Creating projects for your conversations	正在为会话创建项目
+This may take a few minutes	这可能需要几分钟
+System default app	系统默认应用
+This link wants to open an app on your device.	此链接请求打开设备上的应用。
+Always open	始终打开
+ links without asking	链接，无需询问
+Open link	打开链接
+Type absolute path or navigate folders...	输入绝对路径，或浏览文件夹…
+Image rendering blocked (strict mode enabled)	图片显示已阻止（已启用严格模式）
+Alt text:	替代文本：
+Image URL:	图片网址：
+Copy full URL to clipboard	将完整网址复制到剪贴板
+Markdown view mode	Markdown 查看模式
+Raw	原始内容
+Insert in terminal	插入终端
+Insert in Terminal	插入终端
+At mention code block	引用代码块
+At Mention Code Block	引用代码块
+Copy code	复制代码
+Scrollable table	可滚动表格
+Copy as Markdown	复制为 Markdown
+Preview unavailable	预览不可用
+Open video preview	打开视频预览
+Open image preview	打开图片预览
+Media actions	媒体操作
+Not available	不可用
+Before	修改前
+After	修改后
+line	行
+lines	行
+Open Source Code	打开源代码
+Open in tab	在标签页中打开
+Inline Widget	内嵌控件
+Suggested plugin:	推荐插件：
+The conversation was compacted to fit within the context window.	会话已压缩，以适应上下文窗口。
+Waiting for user input	等待用户输入
+Open ↗	打开 ↗
+Settings ↗	设置 ↗
+Error while editing	编辑时出错
+Error while viewing	查看时出错
+Error while editing notebook	编辑笔记本时出错
+Error while reading notebook	读取笔记本时出错
+Full Error	完整错误
+Error ID: 	错误 ID：
+Cancel Sending Message	取消发送消息
+Open Diff	打开差异
+Confirm Undo	确认撤销
+Revert file changes	还原文件修改
+Confirm	确认
+Artifact Comments	文档评论
+File Diff Comments	文件差异评论
+File Comments	文件评论
+Pause	暂停
+Play	播放
+Remove audio	移除音频
+Copy Message	复制消息
+Undo to Here	撤销到此处
+Commented on: 	评论对象：
+Expand message	展开消息
+Try Again	重试
+Confirmation required to execute this step	执行此步骤需要确认
+Confirm Browser Interaction	确认浏览器操作
+Mention Page	引用页面
+Capture Screenshot	截取屏幕
+Capture Console Logs	捕获控制台日志
+Rendering playback	正在生成回放
+Error rendering playback	生成回放时出错
+Playback available	回放可用
+Launching the browser...	正在启动浏览器…
+Deny setting up browser	拒绝设置浏览器
+Open Browser Setup	打开浏览器设置
+Setup	设置
+Denied Sites	被拒绝的网站
+The agent was prevented from accessing some sites	Agent 被阻止访问部分网站
+Cancel step	取消步骤
+Cancel Step	取消步骤
+Other (write your answer)	其他（填写答案）
+Multi-select	多选
+Previous question	上一题
+Next question	下一题
+Expand questionnaire	展开问卷
+Collapse questionnaire	收起问卷
+Expand Questionnaire	展开问卷
+Collapse Questionnaire	收起问卷
+Cancel questionnaire	取消问卷
+Cancel Questionnaire and Stop the Agent	取消问卷并停止 Agent
+Unknown Notebook	未知笔记本
+Workspace > Restore to Snapshot	工作区 > 恢复快照
+quick pick	快速选择
+result	结果
+results	结果
+Open search in external browser	在外部浏览器中打开搜索
+Prompt	消息
+Hide earlier steps	隐藏之前的步骤
+Show 1 earlier step	显示之前的 1 个步骤
+Browser steps	浏览器操作步骤
+Open browser screenshot	打开浏览器截图
+Select an option...	选择选项…
+Decline	拒绝
+Open URL	打开网址
+Browser Use	浏览器操作
+Working directory: 	工作目录：
+No browser pages open	没有打开的浏览器页面
+Tool arguments	工具参数
+Tool Output	工具输出
+Full output written to	完整输出已写入
+image	图片
+images	图片
+Agent encountered an internal error.	Agent 遇到内部错误。
+Open System Browser	打开系统浏览器
+Models Tab	模型标签页
+Sources	来源
+Page contents	页面内容
+Read URL rejected	读取网址被拒绝
+Output	输出
+Logs	日志
+Errors	错误
+This command ran in the sandbox.	此命令在沙箱中运行。
+view full search results	查看完整搜索结果
+Document Answers	文档结果
+Image Answers	图片结果
+Open in settings	在设置中打开
+Checking command status	正在检查命令状态
+Checked command status	已检查命令状态
+Error Details:	错误详情：
+Page title: 	页面标题：
+Section header: 	章节标题：
+Open in side pane	在侧面板中打开
+Read resource: 	读取资源：
+text resource	文本资源
+text resources	文本资源
+Some non-image binary content was truncated.	部分非图片二进制内容已截断。
+No content available for this resource	此资源没有可用内容
+No resources available	暂无可用资源
+Show fewer resources	收起资源
+Show all resources	显示所有资源
+Inspected commit	已查看提交
+Files to edit:	待编辑文件：
+docs	文档
+View Page	查看页面
+Skipped	已跳过
+Expand	展开
+Model Summarization Failed	模型总结失败
+Fallback Summary Used	已使用备用摘要
+User Intent	用户意图
+Session Summary	会话摘要
+Code Change Summary	代码修改摘要
+Extracting DOM elements	正在提取 DOM 元素
+Extracted DOM elements	已提取 DOM 元素
+Open extracted DOM in editor	在编辑器中打开提取的 DOM
+Fetching network requests	正在获取网络请求
+Fetched network requests	已获取网络请求
+View network requests	查看网络请求
+Fetching network request	正在获取网络请求
+Fetched network request	已获取网络请求
+View network request	查看网络请求
+Knowledge Generation	知识生成
+(skipped)	（已跳过）
+New	新建
+Wait for	等待
+Started	已开始
+Reject	拒绝
+Accept	接受
+Compacting	正在压缩
+Recording	正在录音
+Processing	正在处理
+Fork in Current Workspace	在当前工作区分支会话
+Fork in Shared Workspace	在共享工作区分支会话
+Fork in New Workspace	在新工作区分支会话
+Fork Conversation	分支会话
+Creating Fork...	正在创建会话分支…
+Insert into main conversation	插入主会话
+Unarchive the main conversation to insert	取消归档主会话后才能插入
+Thanks for your feedback!	感谢反馈。
+Generations	生成记录
+Input:	输入：
+Output:	输出：
+Cache:	缓存：
+Click to view more	点击查看更多
+Good response	回复满意
+No more older messages	没有更早的消息
+Load older messages	加载更早的消息
+Conversation Log	会话记录
+Working	执行中
+Working 	执行中
+Online	在线
+Offline	离线
+Recent	最近
+No matching conversations	没有匹配的会话
+No archived conversations	没有已归档的会话
+No matching repositories	没有匹配的仓库
+No repositories found	未找到仓库
+No environments found	未找到环境
+Search connectors	搜索连接器
+Connectors	连接器
+Browse Connectors	浏览连接器
+Customization	自定义项
+Loading connectors…	正在加载连接器…
+No connectors available in this project	此项目没有可用连接器
+Migrate with Agent	通过 Agent 迁移
+Switch IDE Workspace	切换 IDE 工作区
+Snooze for 24 Hours	24 小时内不再提示
+Click to copy URL	点击复制网址
+Configure Branches	配置分支
+Loading worktrees...	正在加载工作树…
+No previous worktrees	暂无工作树记录
+Local Checkout	本地检出
+Select Environment	选择环境
+Search past workspaces...	搜索历史工作区…
+Search past worktrees...	搜索历史工作树…
+View Branches	查看分支
+Your quota for this model is running low.	此模型的剩余额度较低。
+Edit Model	编辑模型
+Add Model	添加模型
+Best of N Models	多候选模型
+View plans	查看订阅方案
+Creating environment...	正在创建环境…
+Switch mic	切换麦克风
+Dismiss microphone warning	关闭麦克风提示
+End	结束
+Finalizing transcription...	正在完成转录…
+Schedule type	定时类型
+Required	必填
+Optional	可选
+Target	目标
+Conditions	条件
+Variables	变量
+Fields	字段
+Helpers	辅助函数
+Trigger	触发器
+Execution Identity	执行身份
+Connect an account so the agent can run automations.	连接账号，让 Agent 能够执行自动化。
+Events	事件
+No events recorded.	暂无事件记录。
+Sidecar feature is not available.	侧面功能不可用。
+Edit task title	编辑任务标题
+Runs a command	运行命令
+Could not start.	无法启动。
+Paused.	已暂停。
+Next run	下次运行
+Last run	上次运行
+Untrusted sidecar	不受信任的侧面功能
+Approximate; may start a few minutes later	时间为估算值，可能晚几分钟开始
+No projects created	尚未创建项目
+Select workspace	选择工作区
+Task	任务
+Where	位置
+Untitled	未命名
+This computer	本机
+Where it runs	运行位置
+Create a project first.	请先创建项目。
+Remove trigger	移除触发器
+Add schedule	添加定时规则
+Add trigger	添加触发器
+Search triggers…	搜索触发器…
+Machine	运行设备
+Runs as	运行身份
+Steps	步骤
+What should it do?	需要执行什么？
+Where should it run?	在哪里运行？
+When should it run?	何时运行？
+Create with Prompt	通过消息创建
+Loading trajectory...	正在加载执行轨迹…
+Run command step not found	未找到命令执行步骤
+Loading skills…	正在加载技能…
+No skills available	暂无可用技能
+Layout	布局
+Pause this agent; it keeps its place and streams. Resume to continue.	暂停此 Agent，保留当前进度，恢复后继续。
+Resume this agent where it paused	从暂停处继续此 Agent
+Resume	恢复
+Stop this agent	停止此 Agent
+Filter agents	筛选 Agent
+All agents	所有 Agent
+Stop all agents	停止所有 Agent
+No agent is working right now.	当前没有运行中的 Agent。
+Waiting for the agents’ windows…	等待 Agent 窗口…
+Open Folder (Interactive)	打开文件夹（交互选择）
+A new version is available.	有新版本可用。
+To update:	更新步骤：
+Start it again.	重新启动应用。
+Reload this window.	刷新当前窗口。
+Open Preferences	打开偏好设置
+Block	阻止
+Create a token	创建令牌
+(empty)	（空）
+Hide token	隐藏令牌
+Show token	显示令牌
+Authenticated as	当前登录身份
+Agent can	Agent 可以
+Remove policy	移除策略
+Agent can run	Agent 可以运行
+Workflow files	工作流文件
+Workflow refs	工作流引用
+Repositories	仓库
+Delete repository policy	删除仓库策略
+Contents	仓库内容
+Read access	读取权限
+Issues	议题
+Issue creation	创建议题
+Access rules	访问规则
++ Add issue policy	+ 添加议题策略
+Pull requests	拉取请求
+Pull request creation	创建拉取请求
+Remote branches	远程分支
++ Add pull request policy	+ 添加拉取请求策略
++ Add branch policy	+ 添加分支策略
+Workflow runs	工作流运行记录
+Run visibility	运行记录可见性
++ Add workflow run policy	+ 添加工作流运行策略
+Organizations	组织
+Delete organization policy	删除组织策略
++ Add Repository policy	+ 添加仓库策略
+Host	主机
++ Add Organization policy	+ 添加组织策略
+Reset to preset	恢复预设
+Appears larger on mobile	在移动设备上显示更大
+Light Theme	浅色主题
+No instances yet.	暂无实例。
+Get started with Remote Control	开始使用远程控制
+Loading instances...	正在加载实例…
+Hide Thumbnail Sidebar	隐藏缩略图侧栏
+Show Thumbnail Sidebar	显示缩略图侧栏
+Toggle Thumbnails	切换缩略图
+Previous Page	上一页
+Current Page	当前页
+Next Page	下一页
+Zoom Level	缩放级别
+More toolbar actions	更多工具栏操作
+More	更多
+Thumbnails	缩略图
+Navigation	导航
+Fit Mode	适应模式
+Text Selection	文本选择
+Bounding box	边界框
+Scroll position	滚动位置
+Target text in PDF...	PDF 中的目标文本…
+Write a comment...	填写评论…
+Exit Fullscreen	退出全屏
+Enter Fullscreen	进入全屏
+Download PDF	下载 PDF
+Disable Text Selection	禁用文本选择
+Enable Text Selection	启用文本选择
+Switch to Light Mode	切换浅色模式
+Switch to Dark Mode	切换深色模式
+Fit to Width	适应宽度
+Fit to Page	适应页面
+Clear Search	清除搜索
+Open Search	打开搜索
+Dismiss text selection notice	关闭文本选择提示
+Pull Requests	拉取请求
+Fork conversation in this folder	在此文件夹中分支会话
+Keeps working in this folder. Nothing is copied.	继续在当前文件夹中工作，无需复制内容。
+Current workspace	当前工作区
+Open Mermaid diagram preview	打开 Mermaid 图表预览
+Include unstaged changes	包含未暂存的修改
+Commit	提交
+Commit staged changes	提交已暂存的修改
+Stage and commit all changes	暂存并提交所有修改
+Amend	修改最近一次提交
+Push	推送
+Unstage change	取消暂存修改
+Stage change	暂存修改
+Discard	丢弃
+Discard unstaged changes	丢弃未暂存的修改
+Staged index changes and working tree changes	暂存区和工作树中的修改
+All changes since the branch point	分支点之后的所有修改
+Advanced Settings	高级设置
+Manage Antigravity app settings.	管理 Antigravity 应用设置。
+Thinking	思考中
+Bad response	回复不满意
+Start Voice mode	开始语音模式
+End Voice mode	结束语音模式
+Start Live Chat	开始实时语音
+End Live chat	结束实时语音
+Undo to this point	撤销到此处
+Cannot revert this message	无法还原此消息
+Scroll to Bottom	滚动到底部
+Close split view and go to forked conversation	关闭分屏并前往分支会话
+Project options	项目选项
+Workspace options	工作区选项
+project	项目
+workspace	工作区
+Worked	执行完成
+New tab	新建标签页
+Maximize Pane	最大化面板
+Restore Pane	还原面板
+Close Preview	关闭预览
+Preview	预览
+You're viewing a blank page. View site information	当前为空白页，查看网站信息
+Waiting for subagent	等待子 Agent
+Software Engineering	软件开发
+Knowledge Work	知识工作
+Data & Analytics	数据与分析
+Science	科学研究
+Design	设计
+Skip	跳过
+Let's tailor the experience for you. What best describes your work?	我们来调整使用体验。你的工作主要属于哪一类？
+One last thing before getting started…	开始之前，还有最后一步…
+Getting started with Google Antigravity	开始使用 Google Antigravity
+Here's how you and your agents work together	了解如何与你的 Agent 协作
+Hand off a feature and come back to working code.	交给 Agent 实现功能，回来时即可使用。
+Comment on the plan before your agent starts, and get a walkthrough when it finishes.	在 Agent 开始之前提出计划意见，完成后查看实现说明。
+By default, agents work in folders you choose and ask before sensitive changes. Adjust this anytime in Settings.	默认情况下，Agent 在你选择的文件夹中工作，并在敏感修改前询问。你可以随时在设置中调整。
+Curated sets of plugins for common workflows and roles.	为常见工作流和角色精选的插件组合。
+Not scheduled	未安排
+Start Automation	启动自动化
+Start Extension	启动扩展
+Start	启动
+Scheduled	已安排
+Schedule	计划
+Change schedule	修改计划
+On a schedule	按计划运行
+Sign in needed	需要登录
+Continue with Google	使用 Google 继续
+Continue with different account	换个账号继续
+Sign In with SSO	使用 SSO 登录
+Sign in to finish setting up this plugin.	登录以完成此插件的设置。
+Please fill out all required values to continue.	请填写所有必填项后继续。
+This sidecar failed to start.	此后台服务启动失败。
+Starting the conversation…	正在启动会话…
+Automation credentials expired	自动化凭据已过期
+Automation credentials expiring soon	自动化凭据即将过期
+No internet. Agent features may not work.	网络未连接，Agent 功能可能无法使用。
+Paused. Resume it to schedule the next run.	已暂停，恢复后将安排下一次运行。
+Antigravity can review code, trace errors, and ship across your stack.	Antigravity 可以审查代码、追踪错误并完成整个技术栈的开发交付。
+Antigravity can turn notes and docs into plans, decks, and action items.	Antigravity 可以把笔记和文档转化为计划、演示文稿和待办事项。
+Antigravity can query tables, clean spreadsheets, and chart trends.	Antigravity 可以查询数据表、整理电子表格并绘制趋势图。
+Antigravity can synthesize scientific literature, build interactive visualizations, and run workflows across biology, chemistry, and more.	Antigravity 可以整合科研文献、制作交互图表，并执行生物、化学等领域的工作流。
+Antigravity can turn your designs into live code, briefs, and assets.	Antigravity 可以把设计转化为可运行代码、设计说明和素材。
+Antigravity can draft docs, analyze files, and organize your work.	Antigravity 可以起草文档、分析文件并整理工作内容。

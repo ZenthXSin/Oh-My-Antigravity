@@ -1,0 +1,51 @@
+{
+  "compiled_tailwind.css": {
+    "offset": 178150252,
+    "compressed_size": 41417,
+    "size": 343772,
+    "method": 8,
+    "sha256": "c3adf35a351476f81889d8b90ce2061f4e0faa8d0833d72916bc9b11a3ffc34b"
+  },
+  "dark.png": {
+    "offset": 178191707,
+    "compressed_size": 8240,
+    "size": 10566,
+    "method": 8,
+    "sha256": "37d38b31e2cdc7fbbe9668aafd9e1f9ccb3bfe265fdc546a341a7d4607477da4"
+  },
+  "index.html": {
+    "offset": 178210261,
+    "compressed_size": 1662,
+    "size": 3798,
+    "method": 8,
+    "sha256": "118dcfc4e881a41715f2f363ced8ae9afa6b4d7c1acf312da194cb6fab50f768"
+  },
+  "jetbox.css": {
+    "offset": 178211963,
+    "compressed_size": 16858,
+    "size": 95543,
+    "method": 8,
+    "sha256": "c1938159348c6986ab39baf0784812a973d28f321ec11a2445e780404118df20"
+  },
+  "light.png": {
+    "offset": 178228860,
+    "compressed_size": 7855,
+    "size": 10154,
+    "method": 8,
+    "sha256": "df5f8d84c9172accac8a1c809114cc279b2862808b730b7ef635a9da6737e147"
+  },
+  "main.js": {
+    "offset": 178236752,
+    "compressed_size": 3691456,
+    "size": 12353230,
+    "method": 8,
+    "sha256": "f066a497c9c61198394cb3218e42ff61d85b03910d81282589c3ef066905f347"
+  },
+  "prism_bundle.js": {
+    "offset": 182295375,
+    "compressed_size": 38130,
+    "size": 144298,
+    "method": 8,
+    "sha256": "2f72caa6baa9cd65c4cf72b923ce00821841911f995557645859c468f8eea94b"
+  }
+}

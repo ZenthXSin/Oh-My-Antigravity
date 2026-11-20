@@ -1,0 +1,6 @@
+{
+  "name": "agent-workflow-zh",
+  "displayName": "Agent 工作流优化",
+  "description": "持久 Goal、有限自动续跑、原生工具会话跟踪与中文执行提示词。",
+  "version": "1.2.0"
+}

@@ -1,0 +1,7 @@
+{
+  "agent-workflow": {
+    "PreInvocation": [{"type":"command","command":"node runtime/hook.mjs","timeout":5}],
+    "PostToolUse": [{"matcher":"*","hooks":[{"type":"command","command":"node runtime/hook.mjs","timeout":5}]}],
+    "Stop": [{"type":"command","command":"node runtime/hook.mjs","timeout":5}]
+  }
+}
