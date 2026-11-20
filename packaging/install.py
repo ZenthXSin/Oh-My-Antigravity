@@ -77,7 +77,8 @@ def main():
                'plugin-dashboard':home / '.gemini/config/plugins/antigravity-pulse',
                'locale':home / '.gemini/antigravity-custom/config.json',
                'dashboard-settings':Path(os.environ['LOCALAPPDATA']) / 'AntigravityPulse/settings.json',
-               'dashboard-preferences':Path(os.environ['LOCALAPPDATA']) / 'AntigravityPulse/preferences.json'}
+               'dashboard-preferences':Path(os.environ['LOCALAPPDATA']) / 'AntigravityPulse/preferences.json',
+               'plugin-channels':home / '.gemini/config/plugins/oh-my-channels'}
     files = ManagedFiles(ROOT, targets)
     if args.action == 'install':
         version = json.loads(Archive(archive).read('package.json'))['version']
@@ -94,11 +95,20 @@ def main():
             (ROOT / 'backups').mkdir(exist_ok=True)
             shutil.copy2(archive, ROOT / 'backups/prior-app.asar')
             state = {'app_path':str(app),'profile_home':profile,'prior_app_sha256':digest(archive),
-                     'plugin_entries':{n:plugins.get(n) for n in ['agent-workflow-zh','antigravity-pulse']}}
+                     'plugin_entries':{n:plugins.get(n) for n in ['agent-workflow-zh','antigravity-pulse','oh-my-channels']}}
             write_json(state_file, state)
+        for name in ['agent-workflow-zh','antigravity-pulse','oh-my-channels']:
+            if name not in state['plugin_entries']:
+                state['plugin_entries'][name]=read_json(config_file).get('plugins',{}).get(name)
+        write_json(state_file,state)
         files.begin()
         try:
             install_agent(home, node)
+            shutil.copytree(ROOT / 'integrations/channel-router',targets['plugin-channels'] / 'runtime',dirs_exist_ok=True)
+            write_json(targets['plugin-channels'] / 'plugin.json',{'name':'oh-my-channels','display_name':'Oh My Antigravity Channels','description':'Native Agent API channel aggregation','version':'1.0.0'})
+            config=read_json(config_file)
+            config.setdefault('plugins',{}).setdefault('oh-my-channels',{})['enabled']=True
+            write_json(config_file,config)
             run([sys.executable,ROOT / 'tools/install-dashboard.py'], environment)
             sidecar = targets['plugin-dashboard'] / 'sidecars/panel/sidecar.json'
             definition = read_json(sidecar)
@@ -109,6 +119,7 @@ def main():
                 write_json(targets['dashboard-preferences'], {'schema':1,'language':'zh-CN','languageGuideDismissed':True,
                                                             'usageGuideDismissed':False,'speedStyle':'minimal','revision':1})
             run([sys.executable,ROOT / 'tools/install-locale.py'], environment)
+            run([sys.executable,ROOT / 'tools/install-channels.py'], environment)
             files.finish()
         except Exception:
             files.finish()
@@ -150,6 +161,8 @@ def main():
                 entries[name] = previous
         write_json(config_file, config)
         (ROOT / 'install-result.txt').write_text('增强包已撤回，用户数据和 Goal 记录保留。',encoding='utf8')
+        if args.action == 'uninstall':
+            state_file.unlink(missing_ok=True)
 
 
 if __name__ == '__main__':

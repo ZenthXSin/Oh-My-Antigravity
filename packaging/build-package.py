@@ -35,7 +35,7 @@ def main():
     if STAGE.exists() and not args.refresh:
         raise RuntimeError('Stage already exists; use a fresh staging directory for a new release.')
     STAGE.mkdir(parents=True, exist_ok=True)
-    for relative in ['tools/asar.py','tools/install-locale.py','tools/install-dashboard.py',
+    for relative in ['tools/asar.py','tools/install-locale.py','tools/install-dashboard.py','tools/install-channels.py',
                      'tools/ui-catalog.mjs','tools/build-locale.mjs','tools/locale','frontend','locales']:
         copy(ROOT / relative, STAGE / relative)
     for name in ['install.py','extract-web.py','managed_files.py','preflight.ps1','embedded-web.json']:
@@ -43,6 +43,7 @@ def main():
     for name in ['acorn','acorn-walk']:
         copy(ROOT / 'node_modules' / name, STAGE / 'node_modules' / name)
     copy(ROOT / 'plugins/agent-workflow-zh', STAGE / 'plugins/agent-workflow-zh')
+    copy(ROOT / 'integrations/channel-router', STAGE / 'integrations/channel-router')
     mcp = STAGE / 'plugins/agent-workflow-zh/mcp_config.json'
     mcp.write_text(json.dumps({'mcpServers':{'workflow':{'command':'node','args':['runtime/server.mjs']}}},indent=2),encoding='utf8')
     dashboard = ROOT / 'integrations/antigrative-dashboard'
@@ -63,9 +64,9 @@ def main():
     (STAGE / 'inspection').mkdir(exist_ok=True)
     inventory = {str(f.relative_to(STAGE)).replace('\\','/'):hashlib.sha256(f.read_bytes()).hexdigest()
                  for f in sorted(STAGE.rglob('*')) if f.is_file() and f.name != 'distribution-manifest.json'}
-    (STAGE / 'distribution-manifest.json').write_text(json.dumps({'version':'1.3.0','files':inventory},indent=2),encoding='utf8')
+    (STAGE / 'distribution-manifest.json').write_text(json.dumps({'version':'1.4.0','files':inventory},indent=2),encoding='utf8')
     subprocess.run([args.iscc,'/Qp',str(PACKAGE / 'setup.iss')],check=True)
-    output = ROOT / 'dist/OhMyAntigravity-1.3.0-win-x64-setup.exe'
+    output = ROOT / 'dist/OhMyAntigravity-1.4.0-win-x64-setup.exe'
     sha = hashlib.sha256(output.read_bytes()).hexdigest()
     (output.with_suffix('.sha256')).write_text(sha + '  ' + output.name + '\n',encoding='ascii')
     print(json.dumps({'file':str(output),'bytes':output.stat().st_size,'sha256':sha,'payload_files':len(inventory)},indent=2))

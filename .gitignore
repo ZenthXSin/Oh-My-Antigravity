@@ -8,10 +8,15 @@
 !/THIRD_PARTY_NOTICES.md
 !/docs/prompt-design.md
 !/docs/repository.md
+!/docs/channel-routing.md
 !/docs/tool-execution-comparison.md
 !/frontend/language-settings.js
 !/frontend/locale-loader.js
 !/frontend/status-text.js
+!/frontend/effort-slider.js
+!/frontend/effort-slider.css
+!/frontend/channel-settings.js
+!/frontend/channel-settings.css
 !/integrations/antigrative-dashboard/COMPATIBILITY.md
 !/integrations/antigrative-dashboard/LICENSE
 !/integrations/antigrative-dashboard/README.zh-CN.md
@@ -108,9 +113,24 @@
 !/tools/install-agent.ps1
 !/tools/install-dashboard.py
 !/tools/install-locale.py
+!/tools/install-channels.py
 !/tools/locale/language-support.mjs
 !/tools/locale/project-display.mjs
+!/tools/locale/effort-support.mjs
+!/tools/locale/channel-support.mjs
 !/tools/ui-catalog.mjs
+
+!/integrations/channel-router/adapters/anthropic.mjs
+!/integrations/channel-router/adapters/gemini.mjs
+!/integrations/channel-router/adapters/openai-chat.mjs
+!/integrations/channel-router/adapters/openai-responses.mjs
+!/integrations/channel-router/catalog.mjs
+!/integrations/channel-router/contracts.mjs
+!/integrations/channel-router/gateway.mjs
+!/integrations/channel-router/reasoning-history.mjs
+!/integrations/channel-router/service.mjs
+!/integrations/channel-router/sse.mjs
+!/integrations/channel-router/store.mjs
 
 # Local dependencies, native assets, private data and build products.
 /backups/

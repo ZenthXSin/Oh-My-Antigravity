@@ -283,6 +283,8 @@ def write_windows_shortcut_args(updates, runner=subprocess.run):
         return
     script = (
         "$ErrorActionPreference = 'Stop'\n"
+        "[Console]::InputEncoding = [Text.UTF8Encoding]::new($false)\n"
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)\n"
         "$payload = [Console]::In.ReadToEnd() | ConvertFrom-Json\n"
         "$ws = New-Object -ComObject WScript.Shell\n"
         "foreach ($u in @($payload)) {\n"

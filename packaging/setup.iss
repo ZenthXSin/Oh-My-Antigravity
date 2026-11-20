@@ -1,4 +1,4 @@
-#define ProductVersion "1.3.0"
+#define ProductVersion "1.4.0"
 [Setup]
 AppId={{94F84883-63A1-4512-ABCC-B47B8BE32DC1}
 AppName=Oh My Antigravity
@@ -10,7 +10,7 @@ PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=..\dist
-OutputBaseFilename=OhMyAntigravity-1.3.0-win-x64-setup
+OutputBaseFilename=OhMyAntigravity-1.4.0-win-x64-setup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
@@ -78,7 +78,7 @@ begin
   end;
   ExtractTemporaryFile('preflight.ps1');
   if not Exec(ExpandConstant('{sys}\WindowsPowerShell\v1.0\powershell.exe'),
-    '-NoProfile -ExecutionPolicy Bypass -File "' + ExpandConstant('{tmp}\preflight.ps1') + '" -AppPath "' + HostDirectory + '" -ErrorFile "' + ExpandConstant('{tmp}\preflight-error.txt') + '"',
+    '-NoProfile -ExecutionPolicy Bypass -File "' + ExpandConstant('{tmp}\preflight.ps1') + '" -AppPath "' + HostDirectory + '" -PackagePath "' + ExpandConstant('{app}') + '" -ErrorFile "' + ExpandConstant('{tmp}\preflight-error.txt') + '"',
     '', SW_HIDE, ewWaitUntilTerminated, ExitCode) then
     Result := '无法检查 Antigravity 状态。';
   if ExitCode <> 0 then begin

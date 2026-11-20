@@ -34,9 +34,11 @@ class ManagedFiles:
                 raise RuntimeError('前次安装未完成，请先运行 installer/install.py recover。')
             self.validate_plugins()
             self.receipt['status'] = 'updating'
+            groups = self.receipt['groups']
         else:
             groups = {}
-            for name, target in self.targets.items():
+        for name, target in self.targets.items():
+            if name not in groups:
                 target = Path(target)
                 files = list(target.rglob('*')) if target.is_dir() else [target] if target.exists() else []
                 old = {}
@@ -51,7 +53,7 @@ class ManagedFiles:
                     shutil.copy2(file, backup)
                     old[relative] = digest(file)
                 groups[name] = {'target':str(target),'directory':target.is_dir() or name.startswith('plugin-'),'original':old}
-            self.receipt = {'status':'installing','groups':groups}
+        self.receipt = {'status':'installing','groups':groups}
         write_json(self.receipt_file, self.receipt)
 
     def finish(self):

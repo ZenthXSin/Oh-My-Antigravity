@@ -7,6 +7,7 @@
 | Antigravity | 官方 Windows x64 2.33.0 安装器 | 原厂软件，适用官方条款。未经修改的安装器只在构建时获取并放入安装包，不进入源码仓库；补丁在接收者安装时基于原版资源生成。 |
 | Antigrative Dashboard | [ATtacK030130/antigrative-dashboard](https://github.com/ATtacK030130/antigrative-dashboard/tree/15138b3417bf4f45a02fab7569c5f45e4135cd88)，0.9.10 | MIT；选取的源码和原版权声明位于 `integrations/antigrative-dashboard`。包含适配 Windows 偏好保存的修改。 |
 | Codex | [openai/codex](https://github.com/openai/codex/tree/076ac7856b1235947f271930bd7437bae54a0dfc) | Apache-2.0 的设计参考；未收录其模型客户端或运行时。 |
+| CC Switch | [farion1231/cc-switch](https://github.com/farion1231/cc-switch/tree/6e06607290b805ff2d0b92fa4e6bc69526f5e740) | MIT 的渠道管理及协议适配架构参考；未直接内置 CC Switch 应用。 |
 | Acorn、Acorn Walk | 版本由根目录 `package-lock.json` 固定 | MIT；构建时安装，运行包保留依赖版权和许可证。 |
 | QuickJS / quickjs-emscripten | 版本由 Agent 插件 `package-lock.json` 固定 | MIT；用于实验性 JS 桥，相关许可证随安装依赖保留。 |
 | Node.js | 官方 Windows x64 24.14.1 运行时；构建也支持指定其他来源 | Node.js 及其依赖的许可证随运行时一起分发。 |
