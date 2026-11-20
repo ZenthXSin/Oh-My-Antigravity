@@ -18,20 +18,6 @@ Antigravity 的 Windows 社区增强包：中文／英文界面切换、原生 A
 
 语言切换会刷新界面，请先发送或保存草稿。仪表盘入口为「⋮ → 扩展 → Antigrative Dashboard」，输入框底部的统计图标也可查看详情。
 
-Goal 使用方式：
-
-```text
-/goal <完整目标>
-/goal status
-/goal pause
-/goal resume
-/goal cancel
-```
-
-默认最多自动续跑 12 次，创建时可设置为 1～100 次。它沿用原生任务状态、取消与运行限制，没有精确 token 预算，也不会在应用关闭后后台运行。完成目标需要实际操作证据。
-
-普通工具调用保留原生执行方式。当前已观察到的 2.33.0 工作流环境没有开放 `call_tool`；实验性 JS 桥因此不能用于真实原生工具调度，也不等同于 Codex Code Mode。详情见 [工具执行说明](docs/tool-execution-comparison.md) 和 [提示词设计](docs/prompt-design.md)。
-
 卸载增强包会恢复其管理的应用文件和配置，保留官方 Antigravity、会话及 Goal 数据。应用升级后不会覆盖未知归档；新版本需要重新适配。
 
 源码构建、仓库收录范围及依赖说明见 [仓库说明](docs/repository.md)。官方安装器、原版前端、构建产物、个人配置和运行数据均不进入此源码仓库。
