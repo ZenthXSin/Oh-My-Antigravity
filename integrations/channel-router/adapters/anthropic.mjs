@@ -1,5 +1,5 @@
 import {messages,tools} from './openai-chat.mjs';
-import {encodeReasoning} from '../reasoning-history.mjs';
+import {nextReasoningSignature} from '../reasoning-history.mjs';
 
 export function request(route,body,key) {
   const input=[];let system='';
@@ -22,13 +22,13 @@ export function nativeResponse(value,state) {
   if(value.type==='content_block_start'&&['thinking','redacted_thinking'].includes(value.content_block.type))state.reasoningBlocks.set(value.index,{...value.content_block});
   if(value.type==='content_block_delta') {
     const delta=value.delta;
-    if(delta.type==='text_delta')return {parts:[{text:delta.text,...(state.reasoningItems.length?{thoughtSignature:encodeReasoning(state.route,state.reasoningItems)}:{})}]};
+    if(delta.type==='text_delta')return {parts:[{text:delta.text,...nextReasoningSignature(state)}]};
     if(delta.type==='thinking_delta'){state.reasoningBlocks.get(value.index).thinking+=delta.thinking;return {parts:[{text:delta.thinking,thought:true}]};}
     if(delta.type==='signature_delta')state.reasoningBlocks.get(value.index).signature=(state.reasoningBlocks.get(value.index).signature??'')+delta.signature;
     if(delta.type==='input_json_delta')state.calls.get(value.index).json+=delta.partial_json;
   }
   if(value.type==='content_block_stop'&&state.reasoningBlocks.has(value.index)){const block=state.reasoningBlocks.get(value.index);state.reasoningItems.push(block);return {parts:[]};}
-  if(value.type==='content_block_stop'&&state.calls.has(value.index)) {const call=state.calls.get(value.index);return {parts:[{functionCall:{id:call.id,name:call.name,args:call.json?JSON.parse(call.json):call.input},...(state.reasoningItems.length?{thoughtSignature:encodeReasoning(state.route,state.reasoningItems)}:{})}]};}
+  if(value.type==='content_block_stop'&&state.calls.has(value.index)) {const call=state.calls.get(value.index);return {parts:[{functionCall:{id:call.id,name:call.name,args:call.json?JSON.parse(call.json):call.input},...nextReasoningSignature(state)}]};}
   if(value.type==='message_delta'){state.usage.candidatesTokenCount=value.usage?.output_tokens??0;state.usage.totalTokenCount=state.usage.promptTokenCount+state.usage.candidatesTokenCount;return {parts:[],finish:value.delta?.stop_reason==='max_tokens'?'length':'STOP',usage:state.usage};}
   if(value.type==='error')throw new Error('The Anthropic upstream reported a failed response.');
   return {parts:[]};

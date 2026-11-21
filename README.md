@@ -2,7 +2,7 @@
 
 Antigravity 的 Windows 社区增强包：中文／英文界面切换、桌面主 Agent 多渠道聚合、原生工作流优化，以及内置 Antigrative Dashboard。
 
-**增强包 1.4.2** 适配 **Windows x64、Antigravity 2.33.0**。首次安装默认进入本地工作区，无需登录或配置提供商；使用 Agent 时再添加 API 渠道，也可主动选择官方服务登录。已有接入设置保留，工具调用继续走原生审批。
+**增强包 1.4.3** 适配 **Windows x64、Antigravity 2.33.0**。首次安装默认进入本地工作区，无需登录或配置提供商；使用 Agent 时再添加 API 渠道，也可主动选择官方服务登录。已有接入设置保留，工具调用继续走原生审批。
 
 - **语言设置**：在「设置 → 通用 → 语言」选择简体中文或 English。覆盖项目菜单、权限、设置、任务及常用界面；少数第三方扩展和服务端动态文案可能仍为英文。
 - **桌面主 Agent 多渠道聚合**：支持 OpenAI Chat Completions、OpenAI Responses、Anthropic Messages 和 Gemini 四种协议，参考 CC Switch 的渠道管理与协议适配架构。切换模式或模型后须完全退出并重新启动 Antigravity。
@@ -27,6 +27,6 @@ Antigravity 的 Windows 社区增强包：中文／英文界面切换、桌面�
 
 源码构建、仓库收录范围及依赖说明见 [仓库说明](docs/repository.md)。官方安装器、原版前端、构建产物、个人配置和运行数据均不进入此源码仓库。
 
-当前源码另包含真实 Responses 工具定义兼容修复及渠道模型菜单去重，尚未打入已发布的 1.4.2 安装包。项目知识索引的参考评估见 [AOCI-CODE 调研](docs/aoci-review.md)。
+1.4.3 包含真实 Responses 工具定义兼容修复、渠道模型菜单去重，以及流式思考签名重复写入和旧会话恢复修复。项目知识索引的参考评估见 [AOCI-CODE 调研](docs/aoci-review.md)。
 
 自有改造与翻译采用 [MIT](LICENSE)。Antigravity 原厂软件继续适用其官方条款；Dashboard 及其他依赖保留原许可证，见 [第三方声明](THIRD_PARTY_NOTICES.md)。本项目由社区维护。

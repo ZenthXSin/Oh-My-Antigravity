@@ -1,5 +1,5 @@
 import {messages,tools} from './openai-chat.mjs';
-import {encodeReasoning} from '../reasoning-history.mjs';
+import {nextReasoningSignature} from '../reasoning-history.mjs';
 
 export function request(route,body,key) {
   const input=[];
@@ -18,11 +18,11 @@ export function request(route,body,key) {
 }
 export function nativeResponse(value,state) {
   switch(value.type) {
-    case 'response.output_text.delta':return {parts:[{text:value.delta,...(state.reasoningItems.length?{thoughtSignature:encodeReasoning(state.route,state.reasoningItems)}:{})}]};
+    case 'response.output_text.delta':return {parts:[{text:value.delta,...nextReasoningSignature(state)}]};
     case 'response.reasoning_summary_text.delta':return {parts:[{text:value.delta,thought:true}]};
     case 'response.output_item.done':
       if(value.item?.type==='reasoning'){state.reasoningItems.push(value.item);return {parts:[]};}
-      return value.item?.type==='function_call'?{parts:[{functionCall:{id:value.item.call_id,name:value.item.name,args:JSON.parse(value.item.arguments||'{}')},...(state.reasoningItems.length?{thoughtSignature:encodeReasoning(state.route,state.reasoningItems)}:{})}]}:{parts:[]};
+      return value.item?.type==='function_call'?{parts:[{functionCall:{id:value.item.call_id,name:value.item.name,args:JSON.parse(value.item.arguments||'{}')},...nextReasoningSignature(state)}]}:{parts:[]};
     case 'response.incomplete':return {parts:[],finish:'length'};
     case 'response.completed':{const usage=value.response?.usage;return {parts:[],finish:'STOP',usage:usage?{promptTokenCount:usage.input_tokens??0,candidatesTokenCount:usage.output_tokens??0,totalTokenCount:usage.total_tokens??0,
       ...(usage.input_tokens_details?.cached_tokens!==undefined?{cachedContentTokenCount:usage.input_tokens_details.cached_tokens}:{})}:undefined};}
