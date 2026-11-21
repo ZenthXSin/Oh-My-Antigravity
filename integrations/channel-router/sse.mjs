@@ -6,7 +6,8 @@ export async function* events(stream) {
     while((end=buffer.indexOf('\n\n'))>=0) {
       const frame=buffer.slice(0,end);buffer=buffer.slice(end+2);
       const data=frame.split('\n').filter(line=>line.startsWith('data:')).map(line=>line.slice(5).trimStart()).join('\n');
-      if(data&&data!=='[DONE]')yield JSON.parse(data);
+      if(data==='[DONE]')return;
+      if(data)yield JSON.parse(data);
     }
   }
   buffer+=decoder.decode();

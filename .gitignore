@@ -138,6 +138,9 @@
 !/integrations/channel-router/catalog.mjs
 !/integrations/channel-router/contracts.mjs
 !/integrations/channel-router/gateway.mjs
+!/integrations/channel-router/request-lifetime.mjs
+!/integrations/channel-router/stream-response.mjs
+!/integrations/channel-router/native-prompt.mjs
 !/integrations/channel-router/reasoning-history.mjs
 !/integrations/channel-router/official-router.mjs
 !/integrations/channel-router/service.mjs

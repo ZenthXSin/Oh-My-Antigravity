@@ -3,6 +3,7 @@ import {decodeReasoning} from '../reasoning-history.mjs';
 import {stableStringify,stableValue} from '../stable-json.mjs';
 import {promptCacheKey,promptCacheHeaders} from '../prompt-cache.mjs';
 import {jsonToolSchema} from '../tool-schema.mjs';
+import {nativeUserText} from '../native-prompt.mjs';
 
 export function messages(body,route) {
   const result=[];const calls=[];
@@ -12,7 +13,7 @@ export function messages(body,route) {
     for(const part of content.parts??[]) {
       if(Object.keys(part).some(key=>!['text','thought','thoughtSignature','inlineData','functionCall','functionResponse'].includes(key)))throw new Error('This channel cannot forward the supplied media or content part.');
       for(const item of decodeReasoning(part.thoughtSignature,route))reasoning.set(JSON.stringify(item),item);
-      if(part.text&&!part.thought)parts.push({type:'text',text:part.text});
+      if(part.text&&!part.thought){const text=content.role==='user'?nativeUserText(part.text):part.text;if(text)parts.push({type:'text',text});}
       if(part.inlineData){
         if(!part.inlineData.mimeType.startsWith('image/'))throw new Error('This OpenAI Chat route cannot forward non-image inline media.');
         parts.push({type:'image_url',image_url:{url:`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`}});

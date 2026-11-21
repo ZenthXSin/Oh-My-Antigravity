@@ -130,6 +130,7 @@ def main():
             write_json(state_file, state)
             run([sys.executable,ROOT / 'installer/install.py','recover'], environment)
             raise
+        state['app_path'] = str(app)
         state['installed_entries'] = {n:read_json(config_file).get('plugins', {}).get(n) for n in state['plugin_entries']}
         write_json(state_file, state)
         (ROOT / 'install-result.txt').write_text('安装完成：设置 → 通用 → 语言，可选择简体中文或 English。',encoding='utf8')
