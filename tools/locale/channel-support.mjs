@@ -3,7 +3,9 @@ import path from 'node:path';
 export function addChannelSettings(source,root) {
   const edits=[
     ['let T=R.features.customModelsFeature?.customModelsProvider;T&&z.dispatch(bHa(T));',
-     'let T=R.features.customModelsFeature?.customModelsProvider;if(window.ohMyChannels){const catalog=await window.ohMyChannels.request({action:"catalog"});window.__agyAccountOptional=catalog.connectionMode!=="official";window.__agyChannelsReady=catalog.ready;if(catalog.enabled)T=__agyChannelModelsProvider(catalog);}T&&z.dispatch(bHa(T));'],
+     'let T=R.features.customModelsFeature?.customModelsProvider;let omaCatalog;if(window.ohMyChannels){omaCatalog=await window.ohMyChannels.request({action:"catalog"});window.__agyAccountOptional=omaCatalog.connectionMode!=="official";window.__agyChannelsReady=omaCatalog.ready;window.__agyChannelModelStorage=R.features.storageService;if(omaCatalog.enabled)T=__agyChannelModelsProvider(omaCatalog);}T&&z.dispatch(bHa(T));if(omaCatalog)__agyRestoreChannelModel(omaCatalog,z);'],
+    ['a&&d.payload.fallbackConversationId===void 0&&a.setLastSelectedAgentModel(d.payload.model)',
+     'a&&d.payload.fallbackConversationId===void 0&&(a.setLastSelectedAgentModel(d.payload.model),__agyRememberChannelModel(d.payload.customLabel))'],
     ['showCustomModelHeader:T,onAddCustomModel:P','showCustomModelHeader:T||m.length>0,onAddCustomModel:P'],
     ['if(k)return D.createElement(g0c,{refreshModels:b});var q=a.some(t=>t.options.length>0);',
      'if(k&&!c.length)return D.createElement(g0c,{refreshModels:b});var q=a.some(t=>t.options.length>0)||c.length>0;'],

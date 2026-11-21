@@ -2,7 +2,23 @@ function __agyChannelModelsProvider(catalog) {
   const values=Object.fromEntries(catalog.models.map(model=>[model.label,model.modelInfo]));
   window.__agyChannelModels=new Map(catalog.models.map(model=>[model.label,{base:model.base,effort:model.effort}]));
   window.__agyChannelEfforts=new Map(catalog.models.filter(model=>model.effort).map(model=>[model.label,{base:model.base,effort:model.effort}]));
+  window.__agyChannelAliases=new Map(catalog.models.map(model=>[model.label,model.alias]));
   return {getState:()=>({customModels:values}),onDidChange:()=>({dispose(){}}),pushUpdate(){throw new Error('Manage aggregated models in Settings → Model connection.');}};
+}
+const __agyChannelSelectionKey='antigravity-custom.selected-channel-model';
+function __agyRememberChannelModel(label) {
+  const storage=window.__agyChannelModelStorage;
+  if(!storage||!window.__agyChannelAliases)return;
+  const alias=window.__agyChannelAliases.get(label);
+  if(alias)storage.store(__agyChannelSelectionKey,alias);
+  else storage.remove(__agyChannelSelectionKey);
+}
+function __agyRestoreChannelModel(catalog,store) {
+  const storage=window.__agyChannelModelStorage;
+  if(!storage||!catalog.enabled)return;
+  const alias=storage.get(__agyChannelSelectionKey);
+  const model=catalog.models.find(model=>model.alias===alias);
+  if(model)store.dispatch(pHa({model:model.modelInfo.modelId,customLabel:model.label}));
 }
 function __agyChannelModelItems({models,onEdit}) {
   const {selectedModel,effortIndex,setSelectedModel,bestOfNConfig}=p6();
