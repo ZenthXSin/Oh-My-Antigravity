@@ -6,6 +6,7 @@ import * as gemini from './adapters/gemini.mjs';
 import * as chat from './adapters/openai-chat.mjs';
 import * as responses from './adapters/openai-responses.mjs';
 import * as anthropic from './adapters/anthropic.mjs';
+import {upstreamError,rememberChannelFailure,clearChannelFailure} from './upstream-error.mjs';
 const adapters={'gemini':gemini,'openai-chat':chat,'openai-responses':responses,anthropic};
 
 function authorized(value,token) {
@@ -18,6 +19,7 @@ function nativeChunk(parts,finish,usage) {
 export async function startGateway(store,token) {
   const server=http.createServer(async(request,response)=>{
     const controller=new AbortController();response.on('close',()=>controller.abort());
+    let activeRoute;
     try {
       const url=new URL(request.url,'http://127.0.0.1');
       if(!authorized(request.headers['x-goog-api-key']??url.searchParams.get('key')??request.headers.authorization?.replace(/^Bearer /,''),token)){response.writeHead(401);response.end('Local channel authorization failed.');return;}
@@ -28,14 +30,17 @@ export async function startGateway(store,token) {
       const alias=decodeURIComponent(match[1]);
       const route=available.find(route=>route.alias===alias)??(!alias.startsWith('oma-')?available.find(route=>route.alias===config.defaultAlias):null);
       if(!route)throw new Error('No channel is configured for the selected model.');
+      activeRoute=route;
       const adapter=adapters[route.provider.protocol];
       if(match[2]==='countTokens'&&adapter!==gemini){response.writeHead(501);response.end('This upstream does not expose Gemini token counting.');return;}
       let raw='';for await(const chunk of request){raw+=chunk;if(raw.length>32*1024*1024)throw new Error('Request exceeds the local channel size limit.');}
       const body=JSON.parse(raw);const stream=match[2]==='streamGenerateContent';
-      const upstreamRequest=adapter.request(route,body,await store.secret(route.provider.id),stream);
+      const key=await store.secret(route.provider.id);
+      const upstreamRequest=adapter.request(route,body,key,stream);
       if(match[2]==='countTokens')upstreamRequest.url=upstreamRequest.url.replace(':generateContent',':countTokens');
       const upstream=await fetch(upstreamRequest.url,{method:'POST',headers:upstreamRequest.headers,body:JSON.stringify(upstreamRequest.body),signal:controller.signal,redirect:'error'});
-      if(!upstream.ok)throw new Error(`${route.provider.name}: upstream returned HTTP ${upstream.status}.`);
+      if(!upstream.ok)throw await upstreamError(upstream,route,key);
+      clearChannelFailure();
       if(match[2]==='countTokens'){response.setHeader('content-type','application/json');response.end(JSON.stringify(await upstream.json()));return;}
       if(adapter===gemini) {
         response.setHeader('content-type',stream?'text/event-stream':'application/json');
@@ -68,10 +73,12 @@ export async function startGateway(store,token) {
       else response.end();
     } catch(error) {
       if(controller.signal.aborted)return;
+      rememberChannelFailure(error,activeRoute);
       const known=['No channel','This channel','This OpenAI','A tool result','Upstream stream','The Anthropic upstream','The Responses upstream','Request exceeds'];
       const message=error.message.includes('HTTP ')||known.some(prefix=>error.message.startsWith(prefix))?error.message:'Channel request failed: '+error.name;
-      if(response.headersSent)response.end('data: '+JSON.stringify({error:{code:502,status:'UNAVAILABLE',message}})+'\n\n');
-      else {response.writeHead(502,{'content-type':'application/json'});response.end(JSON.stringify({error:{code:502,status:'UNAVAILABLE',message}}));}
+      const code=error.status??502;const status=code===400?'INVALID_ARGUMENT':code===401?'UNAUTHENTICATED':code===403?'PERMISSION_DENIED':code===404?'NOT_FOUND':code===429?'RESOURCE_EXHAUSTED':'UNAVAILABLE';
+      if(response.headersSent)response.end('data: '+JSON.stringify({error:{code,status,message}})+'\n\n');
+      else {response.writeHead(code,{'content-type':'application/json'});response.end(JSON.stringify({error:{code,status,message}}));}
     }
   });
   await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});

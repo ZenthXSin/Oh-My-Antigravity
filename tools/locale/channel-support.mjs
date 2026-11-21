@@ -12,7 +12,19 @@ export function addChannelSettings(source,root) {
     ['D.createElement(aT,null,D.createElement(__agyLanguageRow,null))','D.createElement(aT,null,D.createElement(__agyLanguageRow,null),D.createElement(__agyChannelSettings,null))']
   ];
   for(const [before,after] of edits){if(source.split(before).length!==2)throw new Error('Native channel integration anchor changed: '+before);source=source.replace(before,after);}
+  const menuStart=source.indexOf('var e0c=({customModels:a,onAddCustomModel:b,onEditCustomModel:c})=>');
+  const menuEnd=source.indexOf(';var g0c=',menuStart);
+  if(menuStart<0||menuEnd<0)throw new Error('Native custom model menu changed.');
+  let menu=source.slice(menuStart,menuEnd);
+  const items='a.map(h=>D.createElement(d0c,{key:h.label,model:h,onEdit:c}))';
+  if(menu.split(items).length!==2)throw new Error('Native custom model rows changed.');
+  menu=menu.replace(items,'D.createElement(__agyChannelModelItems,{models:a,onEdit:c})');
+  const title=['Custom','自定义'].map(label=>'D.createElement("span",{className:"opacity-50"},'+JSON.stringify(label)+')').find(anchor=>menu.includes(anchor));
+  if(!title)throw new Error('Native custom model title changed.');
+  menu=menu.replace(title,'D.createElement("span",{className:"opacity-50"},__agyCustomModelsTitle(a))');
+  menu=menu.replace('=>{var {supportsCustomModels:d}', '=>{if(a.some(model=>window.__agyChannelModels?.has(model.label))){b=void 0;c=void 0;}var {supportsCustomModels:d}');
+  source=source.slice(0,menuStart)+menu+source.slice(menuEnd);
   const end=source.indexOf(';')+1;
-  const ui=['channel-settings.js','channel-connection.js','channel-editor.js'].map(file=>fs.readFileSync(path.join(root,'frontend',file),'utf8')).join('\n');
+  const ui=['channel-models.js','channel-settings.js','channel-connection.js','channel-editor.js'].map(file=>fs.readFileSync(path.join(root,'frontend',file),'utf8')).join('\n');
   return source.slice(0,end)+'\n'+ui+'\n'+source.slice(end);
 }

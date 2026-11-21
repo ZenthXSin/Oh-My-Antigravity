@@ -31,7 +31,7 @@ export function tools(body) {
 export function request(route,body,key) {
   const declarations=tools(body);
   return {url:route.provider.baseUrl.replace(/\/chat\/completions\/?$/,'')+'/chat/completions',headers:{'content-type':'application/json',authorization:'Bearer '+key},
-    body:{model:route.model.id,messages:messages(body),stream:true,stream_options:{include_usage:true},
+    body:{model:route.model.id,messages:messages(body,route),stream:true,stream_options:{include_usage:true},
       ...(declarations.length?{tools:declarations}:{}),...(route.parameters.reasoningEffort?{reasoning_effort:route.parameters.reasoningEffort}:{}),
       max_completion_tokens:route.model.maxOutputTokens??125000}};
 }

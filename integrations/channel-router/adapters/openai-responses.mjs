@@ -13,7 +13,7 @@ export function request(route,body,key) {
     }
   }
   return {url:route.provider.baseUrl.replace(/\/responses\/?$/,'')+'/responses',headers:{'content-type':'application/json',authorization:'Bearer '+key},
-    body:{model:route.model.id,input,stream:true,store:false,include:['reasoning.encrypted_content'],tools:tools(body).map(tool=>({type:'function',...tool.function})),
+    body:{model:route.model.id,input,stream:true,store:false,include:['reasoning.encrypted_content'],tools:tools(body).map(tool=>({type:'function',...tool.function,strict:false})),
       ...(route.parameters.reasoningEffort?{reasoning:{effort:route.parameters.reasoningEffort}}:{}),max_output_tokens:route.model.maxOutputTokens??125000}};
 }
 export function nativeResponse(value,state) {

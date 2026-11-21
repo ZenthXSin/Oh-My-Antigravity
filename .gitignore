@@ -10,6 +10,7 @@
 !/docs/repository.md
 !/docs/channel-routing.md
 !/docs/tool-execution-comparison.md
+!/docs/aoci-review.md
 !/frontend/language-settings.js
 !/frontend/locale-loader.js
 !/frontend/status-text.js
@@ -18,6 +19,7 @@
 !/frontend/channel-settings.js
 !/frontend/channel-connection.js
 !/frontend/channel-editor.js
+!/frontend/channel-models.js
 !/frontend/channel-settings.css
 !/integrations/antigrative-dashboard/COMPATIBILITY.md
 !/integrations/antigrative-dashboard/LICENSE
@@ -138,6 +140,7 @@
 !/integrations/channel-router/reasoning-history.mjs
 !/integrations/channel-router/service.mjs
 !/integrations/channel-router/sse.mjs
+!/integrations/channel-router/upstream-error.mjs
 !/integrations/channel-router/store.mjs
 
 # Local dependencies, native assets, private data and build products.

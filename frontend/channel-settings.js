@@ -1,9 +1,4 @@
 function __agyChannelsText(english,chinese) {return window.__agyUiLanguage==='en'?english:chinese;}
-function __agyChannelModelsProvider(catalog) {
-  const values=Object.fromEntries(catalog.models.map(model=>[model.label,model.modelInfo]));
-  window.__agyChannelEfforts=new Map(catalog.models.filter(model=>model.effort).map(model=>[model.label,{base:model.base,effort:model.effort}]));
-  return {getState:()=>({customModels:values}),onDidChange:()=>({dispose(){}}),pushUpdate(){throw new Error('Manage aggregated models in Settings → Channels.');}};
-}
 function __agyChannelSettings() {
   const h=D.createElement,t=__agyChannelsText;
   const [status,setStatus]=D.useState(null),[expanded,setExpanded]=D.useState(false),[editor,setEditor]=D.useState(null),[pendingMode,setPendingMode]=D.useState(null),[error,setError]=D.useState(''),[busy,setBusy]=D.useState(false);
