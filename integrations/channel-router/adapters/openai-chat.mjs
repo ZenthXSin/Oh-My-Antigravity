@@ -1,7 +1,7 @@
 import {createHash} from 'node:crypto';
 import {decodeReasoning} from '../reasoning-history.mjs';
 import {stableStringify,stableValue} from '../stable-json.mjs';
-import {promptCacheKey} from '../prompt-cache.mjs';
+import {promptCacheKey,promptCacheHeaders} from '../prompt-cache.mjs';
 
 export function messages(body,route) {
   const result=[];const calls=[];
@@ -34,7 +34,7 @@ export function tools(body) {
 export function request(route,body,key,stream,headers) {
   const declarations=tools(body);
   const cacheKey=promptCacheKey(route,body,headers);
-  return {url:route.provider.baseUrl.replace(/\/chat\/completions\/?$/,'')+'/chat/completions',headers:{'content-type':'application/json',authorization:'Bearer '+key},
+  return {url:route.provider.baseUrl.replace(/\/chat\/completions\/?$/,'')+'/chat/completions',headers:{'content-type':'application/json',authorization:'Bearer '+key,...promptCacheHeaders(cacheKey)},
     body:{model:route.model.id,messages:messages(body,route),stream:true,stream_options:{include_usage:true},
       ...(declarations.length?{tools:declarations}:{}),...(route.parameters.reasoningEffort?{reasoning_effort:route.parameters.reasoningEffort}:{}),
       ...(cacheKey?{prompt_cache_key:cacheKey}:{}),max_completion_tokens:route.model.maxOutputTokens??125000}};

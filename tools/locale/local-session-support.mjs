@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 export function addLocalSession(source,root) {
   const edits=[
+    ['search:L=>rhb(K,L.project)', 'search:L=>({...rhb(K,L.project),login:!0})'],
     ['t=p&&m==="uninitialized"','t=p&&m==="uninitialized"&&!window.__agyAccountOptional'],
     ['m=p&&n&&(m==="signedOut"||m==="loginError"||m==="projectPicker"||m==="licensePicker")',
      'm=p&&n&&(!window.__agyAccountOptional||h)&&(m==="signedOut"||m==="loginError"||m==="projectPicker"||m==="licensePicker")'],

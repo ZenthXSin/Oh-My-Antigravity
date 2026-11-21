@@ -7,6 +7,7 @@ import {projectDisplayPairs} from './locale/project-display.mjs';
 import {addEffortSlider} from './locale/effort-support.mjs';
 import {addChannelSettings} from './locale/channel-support.mjs';
 import {addLocalSession} from './locale/local-session-support.mjs';
+import {localizePermissionPrompts,restorePermissionSelector} from './locale/permission-support.mjs';
 
 const root=path.resolve(import.meta.dirname,'..');
 const original=fs.readFileSync(path.join(root,'original-web/main.js'),'utf8');
@@ -27,6 +28,8 @@ walk.ancestor(tree,{Literal(node,ancestors){
   const owner=f&&ancestors[ancestors.indexOf(f)-1];
   const name=f?.id?.name??(owner?.type==='VariableDeclarator'?owner.id.name:undefined);
   if(['xTb','yTb','g3c','Kza','fCd'].includes(name))patches.push({start:node.start,end:node.end,text:JSON.stringify(dictionary[node.value]),original:node.value});
+  const loginDisplay=ancestors.some(a=>a.type==='FunctionDeclaration'&&['L3c','M3c','N3c','O3c','P3c','Q3c','S3c'].includes(a.id?.name));
+  if(loginDisplay&&!patches.some(p=>p.start===node.start))patches.push({start:node.start,end:node.end,text:JSON.stringify(dictionary[node.value]),original:node.value});
 }});
 const templates={
   'Hey ':'你好，', ', what should we build today?':'，今天想做什么？',
@@ -36,6 +39,7 @@ const templates={
   'Select model, current: ':'选择模型，当前：',
   'Agent permissions preset selector, current: ':'Agent 权限预设，当前：',
   'Agent permissions preset: ':'Agent 权限预设：',
+  'Welcome to ':'欢迎使用 ',
 };
 walk.simple(tree,{TemplateElement(node){
   const text=node.value.cooked;
@@ -119,6 +123,7 @@ for(const [before,after] of auditedDisplayPairs){
   if(!compiled.includes(before))throw new Error('Audited display expression changed: '+before);
   compiled=compiled.replace(before,after);
 }
+compiled=compiled.replaceAll('`Worked for ${','`执行耗时 ${');
 const nav='},b??a),D.createElement(Nq,{name:"chevron_right",size:20';
 if(!compiled.includes(nav))throw new Error('Settings navigation structure changed');
 compiled=compiled.replace(nav,'},__agyZhText(b??a)),D.createElement(Nq,{name:"chevron_right",size:20');
@@ -134,12 +139,14 @@ compiled=compiled.replace(projectLabel,'case "standalone":return"无项目";case
 const directiveEnd = tree.body.findLast(n=>n.directive)?.end ?? 0;
 // Keep every original directive (notably use strict) at the start of the script.
 compiled=compiled.slice(0,directiveEnd)+'\n'+labelHelper+textHelper+statusHelper+compiled.slice(directiveEnd);
+compiled=localizePermissionPrompts(compiled,dictionary);
 parse(compiled,{ecmaVersion:'latest'});
 compiled=addLanguageSetting(compiled,root);
 compiled=addEffortSlider(compiled,root);
 compiled=addChannelSettings(compiled,root);
 compiled=addLocalSession(compiled,root);
-const english=addLocalSession(addChannelSettings(addEffortSlider(addLanguageSetting(original,root),root),root),root);
+compiled=restorePermissionSelector(compiled);
+const english=restorePermissionSelector(addLocalSession(addChannelSettings(addEffortSlider(addLanguageSetting(original,root),root),root),root));
 parse(compiled,{ecmaVersion:'latest'});
 parse(english,{ecmaVersion:'latest'});
 const web=path.join(root,'web');fs.mkdirSync(web,{recursive:true});

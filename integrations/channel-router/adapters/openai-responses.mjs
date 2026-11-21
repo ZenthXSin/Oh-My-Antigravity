@@ -1,6 +1,6 @@
 import {messages,tools} from './openai-chat.mjs';
 import {nextReasoningSignature} from '../reasoning-history.mjs';
-import {promptCacheKey} from '../prompt-cache.mjs';
+import {promptCacheKey,promptCacheHeaders} from '../prompt-cache.mjs';
 
 export function request(route,body,key,stream,headers) {
   const input=[];
@@ -14,7 +14,7 @@ export function request(route,body,key,stream,headers) {
     }
   }
   const cacheKey=promptCacheKey(route,body,headers);
-  return {url:route.provider.baseUrl.replace(/\/responses\/?$/,'')+'/responses',headers:{'content-type':'application/json',authorization:'Bearer '+key},
+  return {url:route.provider.baseUrl.replace(/\/responses\/?$/,'')+'/responses',headers:{'content-type':'application/json',authorization:'Bearer '+key,...promptCacheHeaders(cacheKey)},
     body:{model:route.model.id,input,stream:true,store:false,include:['reasoning.encrypted_content'],tools:tools(body).map(tool=>({type:'function',...tool.function,strict:false})),
       ...(cacheKey?{prompt_cache_key:cacheKey}:{}),...(route.parameters.reasoningEffort?{reasoning:{effort:route.parameters.reasoningEffort}}:{}),max_output_tokens:route.model.maxOutputTokens??125000}};
 }

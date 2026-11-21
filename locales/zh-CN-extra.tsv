@@ -76,3 +76,46 @@ Only this conversation uses this preset.	仅当前会话使用此预设。
 Your Remote setting	你的远程权限设置
 Your This Computer setting	你的本机权限设置
 Permission Details	权限详情
+Yes, allow	允许
+Yes, allow this time	允许本次执行
+Yes, allow this download	允许本次下载
+Yes, save rule in this conversation	允许，并在当前会话保存规则
+Yes, save rule globally	允许，并保存全局规则
+Yes, and always allow in this conversation	允许，并在当前会话始终允许
+Yes, and always allow	允许，并始终允许
+No	拒绝
+(tell the agent what to do instead)	（告诉 Agent 应改为怎么做）
+Edit permission target	编辑权限目标
+Requires manual confirmation.	需要手动确认。
+Confirm the command is safe to run outside of the sandbox with full network and disk access.	确认允许此命令在沙箱外运行，并访问网络和磁盘。
+Requesting a one-time administrator (UAC) elevation	正在请求一次管理员（UAC）提权
+Allow the browser agent to download a file?	允许浏览器 Agent 下载文件？
+read access to this path	读取此路径
+write access to this path	写入此路径
+reading this URL	读取此网址
+executing actions on this URL	在此网址执行操作
+browser downloads from this site	从此网站下载文件
+running this command	运行此命令
+running this command outside the sandbox	在沙箱外运行此命令
+using this MCP tool	使用此 MCP 工具
+a one-time administrator (UAC) elevation	一次管理员（UAC）提权
+access to this resource	访问此资源
+User cancelled agent execution.	用户已取消 Agent 执行。
+Continue with Google	使用 Google 账号继续
+Continue with Google Cloud	使用 Google Cloud 账号继续
+Continue with SSO	使用 SSO 继续
+Copy sign-in link	复制登录链接
+Copied!	已复制！
+Trouble signing in? Enter authorization code	登录遇到问题？输入授权码
+Sign in in your browser, then paste the authorization code shown on the callback page.	在浏览器完成登录，然后粘贴回调页面显示的授权码。
+Authorization code	授权码
+Paste authorization code	粘贴授权码
+Submit code	提交授权码
+Authorization code was rejected. Paste a fresh code and try again.	授权码被拒绝，请粘贴新的授权码后重试。
+Other sign-in options	其他登录方式
+Use Business Account	使用企业账号
+Business Account Sign In	企业账号登录
+Last Used	上次使用
+Advanced SSO Options	高级 SSO 选项
+Sign In	登录
+Not Signed In	未登录

@@ -1,4 +1,4 @@
-param([string]$Installer = (Join-Path $PSScriptRoot 'OhMyAntigravity-1.4.5-win-x64-setup.exe'), [switch]$Silent)
+param([string]$Installer = (Join-Path $PSScriptRoot 'OhMyAntigravity-1.4.6-win-x64-setup.exe'), [switch]$Silent)
 $ErrorActionPreference = 'Stop'
 $taskPriorModules = $env:PSModulePath
 $taskPriorTemp = $env:TEMP

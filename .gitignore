@@ -122,6 +122,7 @@
 !/tools/install-channels.py
 !/tools/install-startup.py
 !/tools/locale/local-session-support.mjs
+!/tools/locale/permission-support.mjs
 !/frontend/local-session.js
 !/integrations/channel-router/connection-mode.mjs
 !/tools/locale/language-support.mjs
