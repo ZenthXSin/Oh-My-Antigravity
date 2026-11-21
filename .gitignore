@@ -148,6 +148,9 @@
 !/integrations/channel-router/store.mjs
 !/integrations/channel-router/windows-secret.mjs
 !/integrations/channel-router/tool-schema.mjs
+!/integrations/channel-router/native-session.mjs
+!/integrations/channel-router/attachments.mjs
+!/frontend/attachments.js
 
 # Local dependencies, native assets, private data and build products.
 /backups/

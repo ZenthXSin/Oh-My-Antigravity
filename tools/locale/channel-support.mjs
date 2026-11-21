@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 export function addChannelSettings(source,root) {
   const edits=[
+    ['var {signal:v,...w}=u;u=w.senderWindowId??s8a();','var {signal:v,...w}=u;w=await __agyPrepareAttachments(w);u=w.senderWindowId??s8a();'],
     ['let T=R.features.customModelsFeature?.customModelsProvider;T&&z.dispatch(bHa(T));',
      'let T=R.features.customModelsFeature?.customModelsProvider;let omaCatalog;if(window.ohMyChannels){omaCatalog=await window.ohMyChannels.request({action:"catalog"});window.__agyAccountOptional=["local","channels"].includes(omaCatalog.connectionMode);window.__agyChannelsReady=omaCatalog.ready;window.__agyChannelModelStorage=R.features.storageService;if(omaCatalog.enabled)T=__agyChannelModelsProvider(omaCatalog);}T&&z.dispatch(bHa(T));if(omaCatalog)__agyRestoreChannelModel(omaCatalog,z);'],
     ['a&&d.payload.fallbackConversationId===void 0&&a.setLastSelectedAgentModel(d.payload.model)',
@@ -27,6 +28,6 @@ export function addChannelSettings(source,root) {
   menu=menu.replace('=>{var {supportsCustomModels:d}', '=>{if(a.some(model=>window.__agyChannelModels?.has(model.label))){b=void 0;c=void 0;}var {supportsCustomModels:d}');
   source=source.slice(0,menuStart)+menu+source.slice(menuEnd);
   const end=source.indexOf(';')+1;
-  const ui=['channel-models.js','channel-settings.js','channel-connection.js','channel-editor.js'].map(file=>fs.readFileSync(path.join(root,'frontend',file),'utf8')).join('\n');
+  const ui=['attachments.js','channel-models.js','channel-settings.js','channel-connection.js','channel-editor.js'].map(file=>fs.readFileSync(path.join(root,'frontend',file),'utf8')).join('\n');
   return source.slice(0,end)+'\n'+ui+'\n'+source.slice(end);
 }

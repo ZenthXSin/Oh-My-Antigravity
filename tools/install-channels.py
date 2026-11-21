@@ -24,6 +24,7 @@ if legacy in source:
     state['patched_sha256']=sha256(APP.read_bytes()).hexdigest()
     state['changed_entries']=list(dict.fromkeys([*state['changed_entries'],'dist/languageServer.js','dist/preload.js','dist/ipcHandlers.js']))
     manifest.write_text(json.dumps(state,indent=2),encoding='utf8')
+
 elif marker not in source:
     anchor='    const loginShellEnv = await shellEnvReads.take();'
     if source.count(anchor)!=1:raise RuntimeError('Native startup integration changed.')
@@ -42,4 +43,21 @@ elif marker not in source:
     state=json.loads(manifest.read_text(encoding='utf8'))
     state['patched_sha256']=sha256(APP.read_bytes()).hexdigest()
     state['changed_entries']=list(dict.fromkeys([*state['changed_entries'],'dist/languageServer.js','dist/preload.js','dist/ipcHandlers.js']))
+    manifest.write_text(json.dumps(state,indent=2),encoding='utf8')
+
+# Bind to the existing native server after its actual listening port is known.
+# The bridge is used only to resolve attachment workspaces and historical files.
+archive=Archive(APP)
+source=archive.read('dist/languageServer.js').decode('utf8')
+session_marker='// OH_MY_ANTIGRAVITY_ATTACHMENT_SESSION_V1'
+if session_marker not in source:
+    anchor='                    const actualPort = parseInt(m[1], 10);'
+    if source.count(anchor)!=1:raise RuntimeError('Native server port integration changed.')
+    source=source.replace(anchor,anchor+'\n                    {}\n                    omaChannels.connectNative(actualPort,csrf);'.format(session_marker),1)
+    APP.write_bytes(archive.rewrite({'dist/languageServer.js':source.encode('utf8')}))
+    from hashlib import sha256
+    manifest=ROOT/'backups/2.33.0/manifest.json'
+    state=json.loads(manifest.read_text(encoding='utf8'))
+    state['patched_sha256']=sha256(APP.read_bytes()).hexdigest()
+    state['changed_entries']=list(dict.fromkeys([*state['changed_entries'],'dist/languageServer.js']))
     manifest.write_text(json.dumps(state,indent=2),encoding='utf8')

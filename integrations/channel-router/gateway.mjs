@@ -17,7 +17,7 @@ function authorized(value,token) {
 function nativeChunk(parts,finish,usage) {
   return {candidates:[{index:0,content:{role:'model',parts},...(finish?{finishReason:finish==='length'?'MAX_TOKENS':'STOP'}:{})}],...(usage?{usageMetadata:usage}:{})};
 }
-export async function startGateway(store,token) {
+export async function startGateway(store,token,{attachments}={}) {
   const cache=new PromptCacheStats();
   const server=http.createServer(async(request,response)=>{
     const controller=new AbortController();response.on('close',()=>controller.abort());
@@ -37,6 +37,7 @@ export async function startGateway(store,token) {
       if(match[2]==='countTokens'&&adapter!==gemini){response.writeHead(501);response.end('This upstream does not expose Gemini token counting.');return;}
       let raw='';for await(const chunk of request){raw+=chunk;if(raw.length>32*1024*1024)throw new Error('Request exceeds the local channel size limit.');}
       const body=JSON.parse(raw);const stream=match[2]==='streamGenerateContent';
+      if(attachments)await attachments.request(body);
       const key=await store.secret(route.provider.id);
       const upstreamRequest=adapter.request(route,body,key,stream,request.headers);
       if(adapter===chat||adapter===responses)cacheRequest=cache.start(route,upstreamRequest);
@@ -81,7 +82,7 @@ export async function startGateway(store,token) {
       if(cacheRequest)cacheRequest.state=controller.signal.aborted?'cancelled':'failed';
       if(controller.signal.aborted)return;
       rememberChannelFailure(error,activeRoute);
-      const known=['No channel','This channel','This OpenAI','A tool result','Upstream stream','The Anthropic upstream','The Responses upstream','Request exceeds'];
+      const known=['Attachment','No channel','This channel','This OpenAI','A tool result','Upstream stream','The Anthropic upstream','The Responses upstream','Request exceeds'];
       const message=error.message.includes('HTTP ')||known.some(prefix=>error.message.startsWith(prefix))?error.message:'Channel request failed: '+error.name;
       const code=error.status??502;const status=code===400?'INVALID_ARGUMENT':code===401?'UNAUTHENTICATED':code===403?'PERMISSION_DENIED':code===404?'NOT_FOUND':code===429?'RESOURCE_EXHAUSTED':'UNAVAILABLE';
       if(response.headersSent)response.end('data: '+JSON.stringify({error:{code,status,message}})+'\n\n');

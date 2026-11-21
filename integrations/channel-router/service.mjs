@@ -4,6 +4,8 @@ import {validateProvider} from './contracts.mjs';
 import {publicCatalog,routes} from './catalog.mjs';
 import {startGateway} from './gateway.mjs';
 import {startOfficialRouter} from './official-router.mjs';
+import {NativeSession} from './native-session.mjs';
+import {Attachments} from './attachments.mjs';
 import {connectionMode,connectionModes,usesLocalGateway} from './connection-mode.mjs';
 import {channelFailure} from './upstream-error.mjs';
 
@@ -11,14 +13,17 @@ let instance;
 export async function service(electron) {
   if(!instance)instance=(async()=>{
     const store=new ChannelStore(electron.safeStorage);const config=await store.read();const token=randomBytes(32).toString('hex');
-    const gateway=usesLocalGateway(config)?await startGateway(store,token):null;
+    const native=new NativeSession();const attachments=new Attachments(native);
+    const gateway=usesLocalGateway(config)?await startGateway(store,token,{attachments}):null;
     const target=new ChannelService(store,gateway,token,config);
+    target.native=native;target.attachments=attachments;
     if(connectionMode(config)==='hybrid')target.officialRouter=await startOfficialRouter(gateway,token);
     return target;
   })();
   return instance;
 }
 export class ChannelService {
+  connectNative(port,csrf){this.native.connect(port,csrf);}
   constructor(store,gateway,token,config){this.store=store;this.gateway=gateway;this.token=token;this.initialMode=connectionMode(config);this.catalogSnapshot=JSON.stringify(config?.providers??[]);this.queue=Promise.resolve();}
   async status(){const config=await this.store.read();return {...config,lastFailure:channelFailure(),cacheRequests:this.gateway?.cache.status()??[],connectionMode:connectionMode(config),running:['channels','hybrid'].includes(this.initialMode),restartRequired:connectionMode(config)!==this.initialMode||['channels','hybrid'].includes(this.initialMode)&&JSON.stringify(config.providers)!==this.catalogSnapshot};}
   mutate(action){const operation=this.queue.then(action);this.queue=operation.catch(()=>{});return operation;}
@@ -47,6 +52,6 @@ export async function installIpc(electron) {
     if(event.senderFrame!==event.sender.mainFrame)throw new Error('Channel settings are only available in the main application.');
     const origin=new URL(event.senderFrame.url);if(!['127.0.0.1','localhost','[::1]'].includes(origin.hostname)||!['http:','https:'].includes(origin.protocol))throw new Error('Invalid channel settings origin.');
     if(!input||typeof input!=='object')throw new Error('Invalid channel request.');
-    switch(input.action){case 'status':return target.status();case 'catalog':return target.catalog();case 'save':return target.save(input.provider,{activate:input.activate===true});case 'remove':return target.remove(input.id);case 'mode':return target.mode(input.mode??input.enabled);case 'models':return target.models(input.provider);default:throw new Error('Unknown channel settings action.');}
+    switch(input.action){case 'attachments':return target.attachments.prepare(input.cascadeId,input.media);case 'status':return target.status();case 'catalog':return target.catalog();case 'save':return target.save(input.provider,{activate:input.activate===true});case 'remove':return target.remove(input.id);case 'mode':return target.mode(input.mode??input.enabled);case 'models':return target.models(input.provider);default:throw new Error('Unknown channel settings action.');}
   });
 }

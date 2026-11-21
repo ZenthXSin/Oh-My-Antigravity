@@ -38,9 +38,9 @@ python packaging/build-package.py --node packaging/downloads/node.exe
 
 重新构建已有暂存目录时使用脚本的 `--refresh` 参数。Node.js 来源可通过 `--node` 或 `AGY_NODE_EXE` 指定，编译器可通过 `--iscc` 或 `AGY_ISCC_EXE` 指定。使用固定下载的 Node.js 可保持运行时版本一致。
 
-1.4.7 构建结果输出到 `dist/OhMyAntigravity-1.4.7-win-x64-setup.exe`，并生成 SHA256 文件及 `Install-OhMyAntigravity.cmd`、`launch-setup.ps1`。三份安装文件放在同一目录，可通过 CMD 选择可写临时目录后安装。构建完成后在实际 Windows 安装流程中验证：首次安装、已有 2.33.0 增强安装、中文／英文切换、主 Agent 渠道切换、强度滑条、原生工具审批、Dashboard 使用，以及卸载恢复。只有实际安装与操作覆盖的行为才作为已验证结论。后续源码修复已在真实 OpenAI Responses 渠道由用户确认连接正常，其余真实协议与模型尚未逐一验证；社区安装包自身未签名。
+1.4.8 构建结果输出到 `dist/OhMyAntigravity-1.4.8-win-x64-setup.exe`，并生成 SHA256 文件及 `Install-OhMyAntigravity.cmd`、`launch-setup.ps1`。三份安装文件放在同一目录，可通过 CMD 选择可写临时目录后安装。构建完成后在实际 Windows 安装流程中验证：首次安装、已有 2.33.0 增强安装、中文／英文切换、主 Agent 渠道切换、强度滑条、原生工具审批、Dashboard 使用，以及卸载恢复。只有实际安装与操作覆盖的行为才作为已验证结论。后续源码修复已在真实 OpenAI Responses 渠道由用户确认连接正常，其余真实协议与模型尚未逐一验证；社区安装包自身未签名。
 
-当前 1.4.7 构建产物为 217,545,601 bytes，SHA256 为 `92709313ed6aeb5b3481b7964f6e52e7169d711122c8a32d8720c8a17140a107`。二进制产物及演练截图不进入源码仓库。已操作的原生应用验收范围见 [多渠道与模型设置](channel-routing.md)。
+1.4.8 构建产物为 217,549,028 bytes，SHA256 为 `7b2623db31289382bc692ae3e7fc9dd8a8fbd2081f5e47dd723e273597d84136`。二进制与演练数据不进入源码仓库。
 
 增强前端在安装时从接收者的官方应用中提取并生成。安装工具根据接收者的配置位置写入 MCP 绝对路径；源码 MCP 配置采用相对路径，不包含开发者的账户目录。
 
