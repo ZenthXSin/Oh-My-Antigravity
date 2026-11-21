@@ -2,6 +2,7 @@ import {createHash} from 'node:crypto';
 import {decodeReasoning} from '../reasoning-history.mjs';
 import {stableStringify,stableValue} from '../stable-json.mjs';
 import {promptCacheKey,promptCacheHeaders} from '../prompt-cache.mjs';
+import {jsonToolSchema} from '../tool-schema.mjs';
 
 export function messages(body,route) {
   const result=[];const calls=[];
@@ -29,7 +30,7 @@ export function messages(body,route) {
   return result;
 }
 export function tools(body) {
-  return (body.tools??[]).flatMap(tool=>tool.functionDeclarations??[]).map(tool=>({type:'function',function:{name:tool.name,description:tool.description,parameters:stableValue(tool.parametersJsonSchema??tool.parameters??{type:'object',properties:{}})}})).sort((a,b)=>a.function.name<b.function.name?-1:a.function.name>b.function.name?1:0);
+  return (body.tools??[]).flatMap(tool=>tool.functionDeclarations??[]).map(tool=>({type:'function',function:{name:tool.name,description:tool.description,parameters:stableValue(jsonToolSchema(tool.parametersJsonSchema??tool.parameters??{type:'object',properties:{}}))}})).sort((a,b)=>a.function.name<b.function.name?-1:a.function.name>b.function.name?1:0);
 }
 export function request(route,body,key,stream,headers) {
   const declarations=tools(body);

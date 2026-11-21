@@ -6,7 +6,7 @@ import * as gemini from './adapters/gemini.mjs';
 import * as chat from './adapters/openai-chat.mjs';
 import * as responses from './adapters/openai-responses.mjs';
 import * as anthropic from './adapters/anthropic.mjs';
-import {upstreamError,rememberChannelFailure,clearChannelFailure} from './upstream-error.mjs';
+import {upstreamError,upstreamEventError,rememberChannelFailure,clearChannelFailure} from './upstream-error.mjs';
 import {PromptCacheStats} from './prompt-cache.mjs';
 const adapters={'gemini':gemini,'openai-chat':chat,'openai-responses':responses,anthropic};
 
@@ -57,6 +57,7 @@ export async function startGateway(store,token) {
       if(adapter!==chat&&!contentType.includes('text/event-stream'))throw new Error('This channel requires an SSE streaming response from the upstream.');
       const iterable=contentType.includes('text/event-stream')?events(upstream.body):(async function*(){yield await upstream.json();})();
       for await(const value of iterable) {
+        if(value.type==='response.failed'||value.type==='error')throw upstreamEventError(value,route,key);
         const native=adapter.nativeResponse(value,state);
         if(native.usage)lastUsage=native.usage;
         for(const delta of native.toolDeltas??[]) {

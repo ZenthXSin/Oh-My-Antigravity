@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
+import {isWindowsSecret,encryptWindowsSecret,decryptWindowsSecret} from './windows-secret.mjs';
 
 export class ChannelStore {
   constructor(safeStorage,{directory=path.join(os.homedir(),'.gemini','oh-my-antigravity','channels')}={}) {
@@ -27,10 +28,17 @@ export class ChannelStore {
   }
   async setSecret(id,key) {
     if(typeof key!=='string'||!key.trim()||/[\r\n]/.test(key))throw new Error('API key must be a nonempty single-line value.');
-    if(!this.safeStorage.isEncryptionAvailable())throw new Error('Windows credential encryption is unavailable.');
+    if(process.platform!=='win32'&&!this.safeStorage.isEncryptionAvailable())throw new Error('Windows credential encryption is unavailable.');
     await fs.mkdir(this.directory,{recursive:true});
-    await fs.writeFile(path.join(this.directory,id+'.key'),this.safeStorage.encryptString(key),{mode:0o600});
+    const encrypted=process.platform==='win32'?await encryptWindowsSecret(key):this.safeStorage.encryptString(key);
+    await fs.writeFile(path.join(this.directory,id+'.key'),encrypted,{mode:0o600});
   }
-  async secret(id) {return this.safeStorage.decryptString(await fs.readFile(path.join(this.directory,id+'.key')));}
+  async secret(id) {
+    const value=await fs.readFile(path.join(this.directory,id+'.key'));
+    if(isWindowsSecret(value))return decryptWindowsSecret(value);
+    const key=this.safeStorage.decryptString(value);
+    if(process.platform==='win32')await this.setSecret(id,key);
+    return key;
+  }
   async deleteSecret(id) {await fs.rm(path.join(this.directory,id+'.key'),{force:true});}
 }
