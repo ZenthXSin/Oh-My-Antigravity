@@ -23,3 +23,18 @@ if marker not in source:
     state['patched_sha256'] = sha256(app.read_bytes()).hexdigest()
     state['changed_entries'] = list(dict.fromkeys([*state['changed_entries'], 'dist/storage.js']))
     manifest.write_text(json.dumps(state, indent=2), encoding='utf8')
+
+# The enhancement is tied to an audited host version. Native quit-time
+# installation would replace its integration before a compatible update exists.
+archive = Archive(app)
+updater = archive.read('dist/updater.js').decode('utf8')
+update_marker = '// OH_MY_ANTIGRAVITY_MANAGED_UPDATES_V1'
+if update_marker not in updater:
+    update_anchor = '    electron_updater_1.autoUpdater.autoInstallOnAppQuit = electron_1.app.isPackaged;'
+    if updater.count(update_anchor) != 1:
+        raise RuntimeError('Native update installation policy changed.')
+    updater = updater.replace(update_anchor, '    ' + update_marker + '\n    electron_updater_1.autoUpdater.autoInstallOnAppQuit = false;', 1)
+    app.write_bytes(archive.rewrite({'dist/updater.js': updater.encode('utf8')}))
+    state['patched_sha256'] = sha256(app.read_bytes()).hexdigest()
+    state['changed_entries'] = list(dict.fromkeys([*state['changed_entries'], 'dist/updater.js']))
+    manifest.write_text(json.dumps(state, indent=2), encoding='utf8')

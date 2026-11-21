@@ -17,7 +17,7 @@ export async function service(electron) {
 }
 export class ChannelService {
   constructor(store,gateway,token,config){this.store=store;this.gateway=gateway;this.token=token;this.initialMode=connectionMode(config);this.catalogSnapshot=JSON.stringify(config?.providers??[]);this.queue=Promise.resolve();}
-  async status(){const config=await this.store.read();return {...config,lastFailure:channelFailure(),connectionMode:connectionMode(config),running:this.initialMode==='channels',restartRequired:connectionMode(config)!==this.initialMode||this.initialMode==='channels'&&JSON.stringify(config.providers)!==this.catalogSnapshot};}
+  async status(){const config=await this.store.read();return {...config,lastFailure:channelFailure(),cacheRequests:this.gateway?.cache.status()??[],connectionMode:connectionMode(config),running:this.initialMode==='channels',restartRequired:connectionMode(config)!==this.initialMode||this.initialMode==='channels'&&JSON.stringify(config.providers)!==this.catalogSnapshot};}
   mutate(action){const operation=this.queue.then(action);this.queue=operation.catch(()=>{});return operation;}
   async catalog(){const config=await this.store.read();return publicCatalog({...config,connectionMode:this.initialMode,enabled:this.initialMode==='channels'},this.gateway?.url);}
   async save(input,{activate=false}={}) {

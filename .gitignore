@@ -141,6 +141,8 @@
 !/integrations/channel-router/service.mjs
 !/integrations/channel-router/sse.mjs
 !/integrations/channel-router/upstream-error.mjs
+!/integrations/channel-router/prompt-cache.mjs
+!/integrations/channel-router/stable-json.mjs
 !/integrations/channel-router/store.mjs
 
 # Local dependencies, native assets, private data and build products.

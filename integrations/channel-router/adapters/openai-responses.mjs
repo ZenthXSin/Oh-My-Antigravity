@@ -1,7 +1,8 @@
 import {messages,tools} from './openai-chat.mjs';
 import {nextReasoningSignature} from '../reasoning-history.mjs';
+import {promptCacheKey} from '../prompt-cache.mjs';
 
-export function request(route,body,key) {
+export function request(route,body,key,stream,headers) {
   const input=[];
   for(const message of messages(body,route)) {
     if(message.role==='tool')input.push({type:'function_call_output',call_id:message.tool_call_id,output:message.content});
@@ -12,9 +13,10 @@ export function request(route,body,key) {
       for(const call of message.tool_calls??[])input.push({type:'function_call',call_id:call.id,name:call.function.name,arguments:call.function.arguments});
     }
   }
+  const cacheKey=promptCacheKey(route,body,headers);
   return {url:route.provider.baseUrl.replace(/\/responses\/?$/,'')+'/responses',headers:{'content-type':'application/json',authorization:'Bearer '+key},
     body:{model:route.model.id,input,stream:true,store:false,include:['reasoning.encrypted_content'],tools:tools(body).map(tool=>({type:'function',...tool.function,strict:false})),
-      ...(route.parameters.reasoningEffort?{reasoning:{effort:route.parameters.reasoningEffort}}:{}),max_output_tokens:route.model.maxOutputTokens??125000}};
+      ...(cacheKey?{prompt_cache_key:cacheKey}:{}),...(route.parameters.reasoningEffort?{reasoning:{effort:route.parameters.reasoningEffort}}:{}),max_output_tokens:route.model.maxOutputTokens??125000}};
 }
 export function nativeResponse(value,state) {
   switch(value.type) {

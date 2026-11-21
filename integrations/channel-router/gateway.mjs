@@ -7,6 +7,7 @@ import * as chat from './adapters/openai-chat.mjs';
 import * as responses from './adapters/openai-responses.mjs';
 import * as anthropic from './adapters/anthropic.mjs';
 import {upstreamError,rememberChannelFailure,clearChannelFailure} from './upstream-error.mjs';
+import {PromptCacheStats} from './prompt-cache.mjs';
 const adapters={'gemini':gemini,'openai-chat':chat,'openai-responses':responses,anthropic};
 
 function authorized(value,token) {
@@ -17,9 +18,10 @@ function nativeChunk(parts,finish,usage) {
   return {candidates:[{index:0,content:{role:'model',parts},...(finish?{finishReason:finish==='length'?'MAX_TOKENS':'STOP'}:{})}],...(usage?{usageMetadata:usage}:{})};
 }
 export async function startGateway(store,token) {
+  const cache=new PromptCacheStats();
   const server=http.createServer(async(request,response)=>{
     const controller=new AbortController();response.on('close',()=>controller.abort());
-    let activeRoute;
+    let activeRoute,cacheRequest;
     try {
       const url=new URL(request.url,'http://127.0.0.1');
       if(!authorized(request.headers['x-goog-api-key']??url.searchParams.get('key')??request.headers.authorization?.replace(/^Bearer /,''),token)){response.writeHead(401);response.end('Local channel authorization failed.');return;}
@@ -36,7 +38,8 @@ export async function startGateway(store,token) {
       let raw='';for await(const chunk of request){raw+=chunk;if(raw.length>32*1024*1024)throw new Error('Request exceeds the local channel size limit.');}
       const body=JSON.parse(raw);const stream=match[2]==='streamGenerateContent';
       const key=await store.secret(route.provider.id);
-      const upstreamRequest=adapter.request(route,body,key,stream);
+      const upstreamRequest=adapter.request(route,body,key,stream,request.headers);
+      if(adapter===chat||adapter===responses)cacheRequest=cache.start(route,upstreamRequest);
       if(match[2]==='countTokens')upstreamRequest.url=upstreamRequest.url.replace(':generateContent',':countTokens');
       const upstream=await fetch(upstreamRequest.url,{method:'POST',headers:upstreamRequest.headers,body:JSON.stringify(upstreamRequest.body),signal:controller.signal,redirect:'error'});
       if(!upstream.ok)throw await upstreamError(upstream,route,key);
@@ -47,7 +50,7 @@ export async function startGateway(store,token) {
         for await(const chunk of upstream.body)response.write(chunk);
         response.end();return;
       }
-      const chunks=[];const calls=new Map();const state={calls:new Map(),usage:{},route,reasoningBlocks:new Map(),reasoningItems:[]};let finished=false;
+      const chunks=[];const calls=new Map();const state={calls:new Map(),usage:{},route,reasoningBlocks:new Map(),reasoningItems:[]};let finished=false,lastUsage;
       if(stream)response.setHeader('content-type','text/event-stream');
       const emit=value=>{if(stream)response.write('data: '+JSON.stringify(value)+'\n\n');else chunks.push(value);};
       const contentType=upstream.headers.get('content-type')??'';
@@ -55,6 +58,7 @@ export async function startGateway(store,token) {
       const iterable=contentType.includes('text/event-stream')?events(upstream.body):(async function*(){yield await upstream.json();})();
       for await(const value of iterable) {
         const native=adapter.nativeResponse(value,state);
+        if(native.usage)lastUsage=native.usage;
         for(const delta of native.toolDeltas??[]) {
           const call=calls.get(delta.index??0)??{id:'',name:'',json:''};
           if(delta.id)call.id=delta.id;if(delta.function?.name)call.name+=delta.function.name;
@@ -69,9 +73,11 @@ export async function startGateway(store,token) {
         if(parts.length||native.finish||native.usage)emit(nativeChunk(parts,native.finish,native.usage));
       }
       if(!finished)throw new Error('Upstream stream ended without a completion event.');
+      if(cacheRequest)cache.finish(cacheRequest,lastUsage);
       if(!stream){const parts=chunks.flatMap(chunk=>chunk.candidates[0].content.parts);const last=chunks.at(-1);response.setHeader('content-type','application/json');response.end(JSON.stringify(nativeChunk(parts,last?.candidates[0].finishReason,last?.usageMetadata)));}
       else response.end();
     } catch(error) {
+      if(cacheRequest)cacheRequest.state=controller.signal.aborted?'cancelled':'failed';
       if(controller.signal.aborted)return;
       rememberChannelFailure(error,activeRoute);
       const known=['No channel','This channel','This OpenAI','A tool result','Upstream stream','The Anthropic upstream','The Responses upstream','Request exceeds'];
@@ -82,5 +88,5 @@ export async function startGateway(store,token) {
     }
   });
   await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
-  return {server,url:`http://127.0.0.1:${server.address().port}`};
+  return {server,cache,url:`http://127.0.0.1:${server.address().port}`};
 }
